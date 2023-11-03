@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
         title: "Login",
         home: Scaffold(
             appBar: AppBar(
-              title: const Text("Log In"),
+              title: const Text("E-Learning Application"),
               backgroundColor: Colors.black,
             ),
             body: const LogIn()));
