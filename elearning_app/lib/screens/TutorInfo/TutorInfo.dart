@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../widgets/TutorListItem.dart';
 import './widgets/AppriciateBar.dart';
 import './widgets/TagButton.dart';
-import '../../widgets/Video.dart';
+import 'widgets/Video.dart';
 
 class TutorInfo extends StatelessWidget {
   const TutorInfo({Key? key}) : super(key: key);
@@ -133,6 +133,7 @@ class TutorInfo extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(8),
               child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [

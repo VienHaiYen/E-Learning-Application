@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/Heading.dart';
-import '../widgets/TutorListItem.dart';
+import '../../widgets/Heading.dart';
+import '../../widgets/TutorListItem.dart';
 
 class FindTutor extends StatelessWidget {
   const FindTutor({Key? key}) : super(key: key);
