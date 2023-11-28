@@ -37,9 +37,9 @@ class _RegisterBodyState extends State<RegisterBody> {
           Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.all(10),
-              child: Text(
+              child: const Text(
                 "signUp",
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.blue,
                     fontWeight: FontWeight.w500,
                     fontSize: 30),
@@ -48,8 +48,8 @@ class _RegisterBodyState extends State<RegisterBody> {
             padding: const EdgeInsets.all(10),
             child: TextField(
               controller: nameController,
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
                 labelText: "email",
               ),
             ),
@@ -59,8 +59,8 @@ class _RegisterBodyState extends State<RegisterBody> {
             child: TextField(
               obscureText: true,
               controller: passwordController,
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
                 labelText: "password",
               ),
             ),
@@ -70,8 +70,8 @@ class _RegisterBodyState extends State<RegisterBody> {
             child: TextField(
               obscureText: true,
               controller: repasswordController,
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
                 labelText: "confirmPassword",
               ),
             ),
@@ -91,7 +91,7 @@ class _RegisterBodyState extends State<RegisterBody> {
             height: 50,
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: ElevatedButton(
-                child: Text("signUp"),
+                child: const Text("signUp"),
                 onPressed: () async {
                   if (nameController.text == '' ||
                       passwordController.text == '' ||
@@ -106,7 +106,7 @@ class _RegisterBodyState extends State<RegisterBody> {
           Container(
             margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
             alignment: Alignment.center,
-            child: Text("continueWith"),
+            child: const Text("continueWith"),
           ),
           Container(
             margin: const EdgeInsets.fromLTRB(0, 30, 0, 10),
@@ -140,11 +140,11 @@ class _RegisterBodyState extends State<RegisterBody> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("loginQuestion"),
+              const Text("loginQuestion"),
               TextButton(
-                child: Text(
+                child: const Text(
                   "signIn",
-                  style: const TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
