@@ -26,9 +26,6 @@ class _LoginBodyState extends State<LoginBody> {
   late bool isSuccess = false;
 
   @override
-  bool get mounted => super.mounted;
-
-  @override
   Widget build(BuildContext context) {
     TextEditingController nameController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
