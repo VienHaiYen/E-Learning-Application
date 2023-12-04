@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'screens/Home/Home.dart';
-import 'screens/FindTutor/FindTutor.dart';
-import 'screens/TutorInfo/TutorInfo.dart';
-import 'screens/Schedule/Schedule.dart';
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Material(child: Home());
-//   }
-// }
+import 'package:elearning_app/screens/authenticate/logIn.dart';
+import 'package:elearning_app/screens/dashboard/dashboard.dart';
+import 'package:elearning_app/screens/tutor/tutor.dart';
+import 'package:elearning_app/screens/calendar/calendar.dart';
+import 'package:elearning_app/screens/history/history.dart';
+import 'package:elearning_app/screens/course/course.dart';
+import 'package:elearning_app/screens/my_course/my_course.dart';
+import 'package:elearning_app/screens/menu_list/menu_list.dart';
+import 'package:elearning_app/screens/wallet/wallet.dart';
+import 'package:elearning_app/screens/meeting/meeting.dart';
+import 'package:elearning_app/screens/course_detail/course_detail.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
-  runApp(const MaterialApp(title: 'E-Learning App', home: Schedule()));
+  runApp(CourseDetail());
 }
