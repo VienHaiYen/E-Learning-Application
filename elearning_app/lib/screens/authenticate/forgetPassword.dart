@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:lettutor/screens/authenticate/logIn.dart';
+import 'package:elearning_app/screens/authenticate/logIn.dart';
 
 class ForgetPassword extends StatelessWidget {
   const ForgetPassword({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class ForgetPassword extends StatelessWidget {
         home: Scaffold(
             appBar: AppBar(
                 // leading: const Icon(Icons.book_online),
-                title: const Text("Lettutor")),
+                title: const Text("elearning_app")),
             body: InputMail()));
   }
 }

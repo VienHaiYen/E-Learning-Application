@@ -1,7 +1,7 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:lettutor/screens/authenticate/logIn.dart';
+import 'package:elearning_app/screens/authenticate/logIn.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class SignUp extends StatelessWidget {
         home: Scaffold(
             appBar: AppBar(
                 // leading: const Icon(Icons.book_online),
-                title: const Text("Lettutor")),
+                title: const Text("elearning_app")),
             body: SignUpBody()));
   }
 }

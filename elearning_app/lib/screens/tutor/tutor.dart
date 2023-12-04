@@ -1,10 +1,12 @@
 // ignore_for_file: must_be_immutable
-
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:lettutor/screens/tutor/widgets/comment_item.dart';
-import 'package:lettutor/widgets/group_fixed_button.dart';
+import 'package:elearning_app/screens/tutor/widgets/comment_item.dart';
+import 'package:elearning_app/widgets/group_fixed_button.dart';
 import './widgets/tutor_item.dart';
+
+var counter = 0;
 
 class Tutor extends StatelessWidget {
   const Tutor({Key? key}) : super(key: key);
@@ -22,7 +24,7 @@ class Tutor extends StatelessWidget {
             appBar: AppBar(
                 backgroundColor: Colors.white,
                 title: const Text(
-                  "Lettutor",
+                  "elearning_app",
                   style: TextStyle(
                       color: Colors.blueAccent,
                       fontSize: 26,
@@ -190,9 +192,72 @@ class TutorBody extends StatelessWidget {
             ),
           ),
           // TODO: Get líst mapping all comment
-          const CommentItem()
-
-          // TODO: Make Schedule ( not know nơ )
+          const CommentItem(),
+          // TODO: Horizontal Scroll
+          // TODO: Styling table
+          Table(
+            border: TableBorder.all(),
+            defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+            children: [
+              TableRow(children: [
+                Text(''),
+                Text(DateFormat('dd/MM')
+                    .format(DateTime.now().add(Duration(days: counter + 1)))),
+                Text(DateFormat('dd/MM')
+                    .format(DateTime.now().add(Duration(days: counter + 2)))),
+                Text(DateFormat('dd/MM')
+                    .format(DateTime.now().add(Duration(days: counter + 3)))),
+                Text(DateFormat('dd/MM')
+                    .format(DateTime.now().add(Duration(days: counter + 4)))),
+                Text(DateFormat('dd/MM')
+                    .format(DateTime.now().add(Duration(days: counter + 5)))),
+                Text(DateFormat('dd/MM')
+                    .format(DateTime.now().add(Duration(days: counter + 6)))),
+                Text(DateFormat('dd/MM')
+                    .format(DateTime.now().add(Duration(days: counter + 7))))
+              ]),
+              TableRow(children: [
+                Text('00:00 - 00: 25'),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+              ]),
+              TableRow(children: [
+                Text('00:30 - 00: 55'),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+              ]),
+              TableRow(children: [
+                Text('01:00 - 01: 25'),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+              ]),
+              TableRow(children: [
+                Text('01:30 - 01: 55'),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+                Container(),
+              ]),
+            ],
+          )
         ]));
   }
 }

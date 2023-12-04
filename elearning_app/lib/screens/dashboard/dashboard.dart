@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:lettutor/widgets/group_fixed_button.dart';
+import 'package:elearning_app/widgets/group_fixed_button.dart';
 import './widgets/tutor_item.dart';
 
 class Dashboard extends StatelessWidget {
@@ -21,7 +21,7 @@ class Dashboard extends StatelessWidget {
             appBar: AppBar(
                 backgroundColor: Colors.white,
                 title: const Text(
-                  "Lettutor",
+                  "elearning_app",
                   style: TextStyle(
                       color: Colors.blueAccent,
                       fontSize: 26,

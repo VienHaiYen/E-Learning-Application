@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:lettutor/screens/tutor/widgets/comment_item.dart';
-import 'package:lettutor/widgets/group_fixed_button.dart';
+import 'package:elearning_app/screens/tutor/widgets/comment_item.dart';
+import 'package:elearning_app/widgets/group_fixed_button.dart';
 import './widgets/history_item.dart';
 
 class History extends StatelessWidget {
@@ -22,7 +22,7 @@ class History extends StatelessWidget {
             appBar: AppBar(
                 backgroundColor: Colors.white,
                 title: const Text(
-                  "Lettutor",
+                  "elearning_app",
                   style: TextStyle(
                       color: Colors.blueAccent,
                       fontSize: 26,
@@ -78,7 +78,7 @@ class HistoryBody extends StatelessWidget {
 
           // Lastest book not start
           Container(),
-          // TODO: Dropdown of lession item
+          // TODO: Dropdown of
           const HistoryItem()
         ]));
   }

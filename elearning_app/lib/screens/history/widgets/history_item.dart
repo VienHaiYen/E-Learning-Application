@@ -18,7 +18,7 @@ class HistoryItem extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
           date ?? "CN, 03 Thg 12 23",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
         ),
         Text(lastTime ?? "7giờ trước"),
         TutorItem(),
