@@ -1,0 +1,7 @@
+{
+  "languague" : "English",
+  "@languague":{"description":"description 1"},
+  "helloWorld" : "Hello World",
+  "@helloWorld":{"description":"description 2"}
+
+}
