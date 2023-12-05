@@ -30,7 +30,10 @@ class SignUpBody extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
       child: ListView(
         children: <Widget>[
-          Image.asset("assets/images/login.png"),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Image.asset("assets/img/login.png"),
+          ),
           Container(
               padding: const EdgeInsets.fromLTRB(8, 16, 8, 16),
               alignment: Alignment.center,

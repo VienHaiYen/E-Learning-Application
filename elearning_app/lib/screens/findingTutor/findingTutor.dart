@@ -5,8 +5,8 @@ import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 import './widgets/tutor_item.dart';
 
-class Dashboard extends StatelessWidget {
-  const Dashboard({Key? key}) : super(key: key);
+class FindingTutor extends StatelessWidget {
+  const FindingTutor({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +28,13 @@ class Dashboard extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 )),
             body: Stack(children: [
-              DashboardBody(),
+              FindingTutorBody(),
               const Positioned(bottom: 20, right: 20, child: GroupFixedButton())
             ])));
   }
 }
 
-class DashboardBody extends StatelessWidget {
+class FindingTutorBody extends StatelessWidget {
   final searchOptions = [
     "Tất cả",
     "Tiếng Anh cho trẻ em",
@@ -43,7 +43,7 @@ class DashboardBody extends StatelessWidget {
     "FLYERS"
   ];
 
-  DashboardBody({super.key});
+  FindingTutorBody({super.key});
 
   TextEditingController nameC = TextEditingController();
 

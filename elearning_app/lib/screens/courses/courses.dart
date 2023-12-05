@@ -6,10 +6,10 @@ import 'package:elearning_app/widgets/course_item.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 import 'package:elearning_app/widgets/dropdown.dart';
 
-class Course extends StatelessWidget {
-  Course({super.key});
+class Courses extends StatelessWidget {
+  Courses({super.key});
 
-  TextEditingController courseC = TextEditingController();
+  TextEditingController coursesC = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,16 +31,16 @@ class Course extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 )),
             body: Stack(children: [
-              CourseBody(),
+              CoursesBody(),
               const Positioned(bottom: 20, right: 20, child: GroupFixedButton())
             ])));
   }
 }
 
-class CourseBody extends StatelessWidget {
-  CourseBody({super.key});
+class CoursesBody extends StatelessWidget {
+  CoursesBody({super.key});
 
-  TextEditingController courseC = TextEditingController();
+  TextEditingController coursesC = TextEditingController();
   final List<String> list = <String>['One', 'Two', 'Three', 'Four'];
 
   @override
@@ -77,7 +77,7 @@ class CourseBody extends StatelessWidget {
                             height: 40,
                             width: 250,
                             child: TextField(
-                                controller: courseC,
+                                controller: coursesC,
                                 // style: TextStyle(fontSize: 12),
                                 decoration: const InputDecoration(
                                     contentPadding:
