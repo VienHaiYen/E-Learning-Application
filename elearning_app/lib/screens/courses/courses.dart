@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/widgets/course_item.dart';
@@ -13,27 +14,12 @@ class Courses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: "Learning Courses",
-        theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.black,
-                primary: const Color.fromARGB(255, 250, 210, 8),
-                brightness: Brightness.light)),
-        home: Scaffold(
-            appBar: AppBar(
-                backgroundColor: Colors.white,
-                title: const Text(
-                  "elearning_app",
-                  style: TextStyle(
-                      color: Colors.blueAccent,
-                      fontSize: 26,
-                      fontWeight: FontWeight.w600),
-                )),
-            body: Stack(children: [
-              CoursesBody(),
-              const Positioned(bottom: 20, right: 20, child: GroupFixedButton())
-            ])));
+    return Scaffold(
+        appBar: MyAppBar(),
+        body: Stack(children: [
+          CoursesBody(),
+          const Positioned(bottom: 20, right: 20, child: GroupFixedButton())
+        ]));
   }
 }
 

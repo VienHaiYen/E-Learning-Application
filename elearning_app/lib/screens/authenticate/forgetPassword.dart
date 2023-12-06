@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/screens/authenticate/logIn.dart';
 
@@ -8,13 +9,7 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: "Forget password Screen",
-        home: Scaffold(
-            appBar: AppBar(
-                // leading: const Icon(Icons.book_online),
-                title: const Text("elearning_app")),
-            body: InputMail()));
+    return Scaffold(appBar: MyAppBar(), body: InputMail());
   }
 }
 

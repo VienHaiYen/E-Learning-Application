@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: MyAppBar(),
-      body: ForgetPassword(),
+      body: SignUp(),
     );
   }
 }

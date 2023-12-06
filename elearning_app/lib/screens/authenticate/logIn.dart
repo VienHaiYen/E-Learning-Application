@@ -1,4 +1,5 @@
 // ignore: file_names
+import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/screens/authenticate/signUp.dart';
@@ -9,13 +10,7 @@ class LogIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: "Log In Screen",
-        home: Scaffold(
-            appBar: AppBar(
-                // leading: const Icon(Icons.book_online),
-                title: const Text("elearning_app")),
-            body: LogInBody()));
+    return Scaffold(appBar: MyAppBar(), body: LogInBody());
   }
 }
 

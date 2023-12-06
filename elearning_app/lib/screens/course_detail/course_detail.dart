@@ -1,3 +1,4 @@
+import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/widgets/course_item.dart';
@@ -12,28 +13,12 @@ class CourseDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: "Learning Courses",
-        home: Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              actions: [
-                ElevatedButton(onPressed: null, child: Icon(Icons.map)),
-                ElevatedButton(onPressed: null, child: Icon(Icons.map)),
-              ],
-              title: Container(
-                // margin: EdgeInsets.only(left: 20),
-                child: const Text("elearning_app",
-                    style: TextStyle(
-                        color: Colors.blueAccent,
-                        fontSize: 26,
-                        fontWeight: FontWeight.w600)),
-              ),
-            ),
-            body: const Stack(children: [
-              CourseDetailBody(),
-              Positioned(bottom: 20, right: 20, child: GroupFixedButton())
-            ])));
+    return const Scaffold(
+        appBar: MyAppBar(),
+        body: Stack(children: [
+          CourseDetailBody(),
+          Positioned(bottom: 20, right: 20, child: GroupFixedButton())
+        ]));
   }
 }
 

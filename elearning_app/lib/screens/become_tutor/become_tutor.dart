@@ -1,3 +1,4 @@
+import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class BecomeTutor extends StatelessWidget {
@@ -5,6 +6,9 @@ class BecomeTutor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: MyAppBar(),
+      body: Container(),
+    );
   }
 }

@@ -1,4 +1,5 @@
 // ignore: file_names
+import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/screens/authenticate/logIn.dart';
@@ -8,13 +9,7 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: "Sign Up Screen",
-        home: Scaffold(
-            appBar: AppBar(
-                // leading: const Icon(Icons.book_online),
-                title: const Text("elearning_app")),
-            body: SignUpBody()));
+    return Scaffold(body: SignUpBody());
   }
 }
 
@@ -124,7 +119,7 @@ class SignUpBody extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Dã có tài khoản"),
+                      const Text("Đã có tài khoản"),
                       TextButton(
                           onPressed: () {
                             Navigator.push(
