@@ -4,6 +4,7 @@ import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 import './widgets/history_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class History extends StatelessWidget {
   const History({Key? key}) : super(key: key);
@@ -39,8 +40,8 @@ class HistoryBody extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 8),
-            child: const Text(
-              "Lịch đã đặt",
+            child: Text(
+              AppLocalizations.of(context)!.booked_schedule,
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
             ),
           ),

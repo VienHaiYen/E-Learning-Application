@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:elearning_app/screens/menu_list/widgets/menu_tile.dart';
 import 'package:elearning_app/screens/menu_list/widgets/user_tile.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MenuList extends StatelessWidget {
   MenuList({super.key});
@@ -34,15 +35,15 @@ class MenuListBody extends StatelessWidget {
       children: [
         UserTile(),
         MenuTile(
-            title: "Lịch học định kì",
+            title: AppLocalizations.of(context)!.recurring_schedule,
             icon: const Icon(Icons.calendar_month),
             route: AppRouter.myCalendar),
         MenuTile(
-            title: "Gia sư",
+            title: AppLocalizations.of(context)!.tutor,
             icon: const Icon(Icons.calendar_month),
             route: AppRouter.findingTutor),
         MenuTile(
-            title: "Lịch học",
+            title: AppLocalizations.of(context)!.schedule,
             icon: const Icon(Icons.calendar_view_week),
             route: AppRouter.myCalendar),
         MenuTile(
@@ -50,16 +51,16 @@ class MenuListBody extends StatelessWidget {
             icon: const Icon(Icons.history),
             route: AppRouter.myHistory),
         MenuTile(
-          title: "Khóa học",
+          title: AppLocalizations.of(context)!.course,
           icon: const Icon(Icons.school),
           route: AppRouter.courses,
         ),
         MenuTile(
-            title: "Khóa học của tôi",
+            title: AppLocalizations.of(context)!.my_courses,
             icon: const Icon(Icons.book),
             route: AppRouter.myCourses),
         MenuTile(
-            title: "Đăng ký làm gia sư",
+            title: AppLocalizations.of(context)!.tutor_register,
             icon: const Icon(Icons.calendar_month),
             route: AppRouter.becomeTutor),
         MenuTile(

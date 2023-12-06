@@ -6,6 +6,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/screens/tutor/widgets/comment_item.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 import './widgets/tutor_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 var counter = 0;
 
@@ -73,9 +74,9 @@ class TutorBody extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.only(top: 9),
-            child: const Text(
-              "Ngôn ngữ",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            child: Text(
+              AppLocalizations.of(context)!.language,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
           ),
           Wrap(
@@ -95,9 +96,9 @@ class TutorBody extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.only(top: 9),
-            child: const Text(
-              "Chuyên ngành",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            child: Text(
+              AppLocalizations.of(context)!.specialties,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
           ),
           Wrap(
@@ -117,9 +118,9 @@ class TutorBody extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.only(top: 9),
-            child: const Text(
-              "Khóa học tham khảo",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            child: Text(
+              AppLocalizations.of(context)!.suggested_courses,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
           ),
           Column(
@@ -144,9 +145,9 @@ class TutorBody extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.only(top: 9),
-            child: const Text(
-              "Sở thích",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            child: Text(
+              AppLocalizations.of(context)!.interests,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
           ),
           Container(
@@ -158,9 +159,9 @@ class TutorBody extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.only(top: 9),
-            child: const Text(
-              "Kinh nghiệm giảng dạy",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            child: Text(
+              AppLocalizations.of(context)!.teaching_experience,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
           ),
           Container(
@@ -172,9 +173,9 @@ class TutorBody extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.only(top: 9),
-            child: const Text(
-              "Người khác đánh giá",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            child: Text(
+              AppLocalizations.of(context)!.others_review,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
           ),
           // TODO: Get líst mapping all comment

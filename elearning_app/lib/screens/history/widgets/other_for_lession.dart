@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Other extends StatelessWidget {
   const Other(
@@ -49,12 +50,12 @@ class Other extends StatelessWidget {
           children: [
             TextButton(
                 onPressed: () {},
-                child: const Text("Đánh giá",
-                    style: TextStyle(color: Colors.blue, fontSize: 16))),
+                child: Text(AppLocalizations.of(context)!.others_review,
+                    style: const TextStyle(color: Colors.blue, fontSize: 16))),
             TextButton(
                 onPressed: () {},
-                child: const Text("Báo cáo",
-                    style: TextStyle(color: Colors.blue, fontSize: 16)))
+                child: Text(AppLocalizations.of(context)!.report,
+                    style: const TextStyle(color: Colors.blue, fontSize: 16)))
           ],
         )
       ]),

@@ -3,6 +3,7 @@ import 'package:elearning_app/routers/routers.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class SignUpBody extends StatelessWidget {
                 children: [
                   Padding(
                       padding: const EdgeInsets.all(8),
-                      child: Text("Đăng Kí",
+                      child: Text(AppLocalizations.of(context)!.sign_up,
                           style: TextStyle(
                             color: Colors.blue[700],
                             fontSize: 26,
@@ -54,7 +55,7 @@ class SignUpBody extends StatelessWidget {
                     style: const TextStyle(fontSize: 14),
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.account_circle),
-                      labelText: 'Địa chỉ Email',
+                      labelText: 'Email',
                       hintText: 'mail@example.com',
                       labelStyle: TextStyle(fontSize: 14, color: Colors.grey),
                       hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
@@ -66,7 +67,7 @@ class SignUpBody extends StatelessWidget {
                     obscureText: true,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.key),
-                      labelText: 'Mật khẩu',
+                      labelText: 'Password',
                       hintText: 'mail@example.com',
                       labelStyle: TextStyle(fontSize: 14, color: Colors.grey),
                       hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
@@ -83,15 +84,15 @@ class SignUpBody extends StatelessWidget {
                               const Color.fromARGB(255, 29, 137, 225),
                         ),
                         child: Text(
-                          "Đăng nhập".toUpperCase(),
+                          AppLocalizations.of(context)!.sign_up.toUpperCase(),
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 16),
                         )),
                   ),
                   Container(
                       margin: const EdgeInsets.fromLTRB(0, 12, 0, 12),
-                      child: const Text(
-                        "Hoặc tiếp tục với",
+                      child: Text(
+                        AppLocalizations.of(context)!.or,
                       )),
                   Container(
                       margin: const EdgeInsets.symmetric(
@@ -120,12 +121,12 @@ class SignUpBody extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Đã có tài khoản"),
+                      Text(AppLocalizations.of(context)!.have_an_account),
                       TextButton(
                           onPressed: () {
                             Navigator.pushNamed(context, AppRouter.logIn);
                           },
-                          child: const Text("Đăng nhập"))
+                          child: Text(AppLocalizations.of(context)!.sign_in))
                     ],
                   )
                 ],

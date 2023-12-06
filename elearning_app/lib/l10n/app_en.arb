@@ -69,5 +69,24 @@
     "specialties": "Specialties",
     "suggested_courses": "Suggested Courses",
     "interests": "Interests",
-    "teaching_experience": "Teaching experience"
+    "teaching_experience": "Teaching experience",
+
+    "my_courses": "My courses",
+    "tutor_register":"Become tutor",
+    "log_out":"Log out",
+    "recurring_schedule":"Recurring Lesson Schedule",
+    "tutor":"Tutor",
+    "schedule":"Schedule",
+    "history":"History",
+
+    "find_tutor":"Find tutor",
+    "input_free_time":"Input your free time",
+    "input_date":"Input date",
+    "input_start_end_time":"Input your time to start and end",
+    "booked_schedule":"Booked schedule",
+    "booked_time_frame":"Choose your recurring lesson time slot in the week with your tutor ",
+    "chat":"Chat",
+    "lesson_require":"Requirement",
+    "lesson_require_edit":"Edit requirement",
+    "report":"Report"
 }

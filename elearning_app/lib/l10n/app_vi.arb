@@ -22,7 +22,7 @@
     "confirm_password_error": "Mật khẩu chưa trùng khớp với mật khẩu mới",
     "old_password": "Mật khẩu cũ",
     "new_password": "Mật khẩu mới",
-    "confirm_password": "Xác nhận mật khẩu mới",
+    "confirm_password": "Xác nhận",
     "change_password": "Đổi mật khẩu",
     "change_password_error": "Đổi mật khẩu thất bại!",
     "username": "Tên người dùng",
@@ -31,7 +31,7 @@
     "select_birthday": "Chọn ngày sinh của bạn",
     "study_schedule": "Thời khoá biểu",
     "save_changes": "Lưu thay đổi",
-    "others_review": "Đánh giá về bạn",
+    "others_review": "Đánh giá",
     "username_empty": "Tên người dùng không được để trống",
     "update_failed": "Cập nhật thất bại!",
     "update_success": "Cập nhật thành công!",
@@ -69,5 +69,25 @@
     "specialties": "Chuyên ngành",
     "suggested_courses": "Khoá học tham khảo",
     "interests": "Sở thích",
-    "teaching_experience": "Kinh nghiệm giảng dạy"
+    "teaching_experience": "Kinh nghiệm giảng dạy",
+
+
+    "my_courses": "Khóa học của tôi",
+    "tutor_register":"Đăng ký làm gia sư",
+    "log_out":"Đăng xuất",
+    "recurring_schedule":"Lịch học định kì",
+    "tutor":"Gia sư",
+    "schedule":"Lịch học",
+    "history":"Lịch sử",
+
+    "find_tutor":"Tìm kiếm gia sư",
+    "input_free_time":"Nhập thời gian có lịch trống",
+    "input_date":"Chọn một ngày",
+    "input_start_end_time":"Chọn giờ bắt đầu kết thúc",
+    "booked_schedule":"Lịch đã đặt",
+    "booked_time_frame":"Đây là danh sách những khung giờ bạn đã đặt \nBạn có thể theo dõi khi nào buổi học bắt đầu, tham gia buổi học bằng một cú nhấp chuột hoặc có thể hủy buổi học trước 2 tiếng. ",
+    "chat":"Nhắn tin",
+    "lesson_require":"Yêu cầu cho buổi học",
+    "lesson_require_edit":"Chỉnh sửa yêu cầu",
+    "report":"Báo cáo"
 }

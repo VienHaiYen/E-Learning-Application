@@ -7,6 +7,8 @@ import 'package:elearning_app/widgets/course_item.dart';
 import 'package:elearning_app/screens/tutor/tutor.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class CourseDetail extends StatelessWidget {
   CourseDetail({super.key});
 
@@ -158,7 +160,7 @@ class CourseDetailBody extends StatelessWidget {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const Tutor()));
             },
-            child: const Text('More info')),
+            child: Text(AppLocalizations.of(context)!.more_info)),
       ],
     );
   }

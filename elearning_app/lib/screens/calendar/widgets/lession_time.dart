@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LessionTime extends StatelessWidget {
   const LessionTime({super.key, this.time});
@@ -21,17 +22,18 @@ class LessionTime extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "Yêu cầu cho buổi học",
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context)!.lesson_require,
+                  style: const TextStyle(
                     fontSize: 16,
                   ),
                 ),
                 // TODO: chưa làm dropdown xuống
                 TextButton(
                     onPressed: () {},
-                    child: const Text("Chỉnh sửa yêu cầu",
-                        style: TextStyle(color: Colors.blue)))
+                    child: Text(
+                        AppLocalizations.of(context)!.lesson_require_edit,
+                        style: const TextStyle(color: Colors.blue)))
               ],
             )
           ],

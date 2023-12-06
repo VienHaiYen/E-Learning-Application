@@ -4,6 +4,7 @@ import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 import './widgets/calendar_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Calendar extends StatelessWidget {
   const Calendar({Key? key}) : super(key: key);
@@ -39,9 +40,9 @@ class CalendarBody extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.symmetric(vertical: 8),
-            child: const Text(
-              "Lịch đã đặt",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+            child: Text(
+              AppLocalizations.of(context)!.booked_schedule,
+              style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
             ),
           ),
           // TODO:
@@ -54,9 +55,9 @@ class CalendarBody extends StatelessWidget {
                     left: BorderSide(
                         width: 4, color: Color.fromARGB(255, 87, 86, 86)))),
             // TODO: Làm thanh dọc đoạn văn bản trên
-            child: const Text(
-              "Đây là danh sách những khung giờ bạn đã đặt \nBạn có thể theo dõi khi nào buổi học bắt đầu, tham gia buổi học bằng một cú nhấp chuột hoặc có thể hủy buổi học trước 2 tiếng.",
-              style: TextStyle(fontSize: 16),
+            child: Text(
+              AppLocalizations.of(context)!.booked_time_frame,
+              style: const TextStyle(fontSize: 16),
             ),
           ),
           Container(

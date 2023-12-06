@@ -4,6 +4,7 @@ import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/screens/my_course/widgets/my_course_item.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyCourse extends StatelessWidget {
   MyCourse({super.key});
@@ -31,11 +32,12 @@ class MyCourseBody extends StatelessWidget {
         child: ListView(children: [
           Container(
             padding: const EdgeInsets.symmetric(vertical: 28),
-            child: const Column(
+            child: Column(
               children: [
                 Text(
-                  "KHOÁ HỌC",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  AppLocalizations.of(context)!.course,
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w500),
                 ),
                 Text(
                   "ENGLISH CONVERSATION 101",

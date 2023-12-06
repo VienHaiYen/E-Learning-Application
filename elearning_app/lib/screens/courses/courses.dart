@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:elearning_app/widgets/course_item.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 // import 'package:elearning_app/widgets/dropdown.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Courses extends StatelessWidget {
   Courses({super.key});
@@ -48,8 +49,8 @@ class CoursesBody extends StatelessWidget {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                    const Text(
-                      "Khám phá các khóa học",
+                    Text(
+                      AppLocalizations.of(context)!.discover,
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
                     ),
@@ -64,11 +65,12 @@ class CoursesBody extends StatelessWidget {
                             child: TextField(
                                 controller: coursesC,
                                 // style: TextStyle(fontSize: 12),
-                                decoration: const InputDecoration(
+                                decoration: InputDecoration(
                                     contentPadding:
-                                        EdgeInsets.only(top: 4, left: 8),
-                                    hintText: "Khóa học",
-                                    border: OutlineInputBorder(
+                                        const EdgeInsets.only(top: 4, left: 8),
+                                    hintText:
+                                        AppLocalizations.of(context)!.course,
+                                    border: const OutlineInputBorder(
                                         borderSide:
                                             BorderSide(color: Colors.black))))),
                         Container(

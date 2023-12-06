@@ -2,6 +2,7 @@ import 'package:elearning_app/routers/routers.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/widgets/avatar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TutorItem extends StatelessWidget {
   TutorItem({Key? key}) : super(key: key);
@@ -43,16 +44,16 @@ class TutorItem extends StatelessWidget {
                       ),
 
                       Container(
-                        child: const GFButton(
-                          padding: EdgeInsets.all(0),
+                        child: GFButton(
+                          padding: const EdgeInsets.all(0),
                           onPressed: null,
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.message_outlined,
                             size: 14,
                           ),
-                          text: "Nhắn tin",
+                          text: AppLocalizations.of(context)!.chat,
                           textStyle:
-                              TextStyle(color: Colors.blue, fontSize: 14),
+                              const TextStyle(color: Colors.blue, fontSize: 14),
                         ),
                       )
                     ])),

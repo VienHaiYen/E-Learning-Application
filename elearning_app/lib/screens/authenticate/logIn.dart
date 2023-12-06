@@ -5,6 +5,7 @@ import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/routers/routers.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LogIn extends StatelessWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -37,8 +38,8 @@ class LogInBody extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Text("Đăng Nhập",
+                      padding: const EdgeInsets.all(8),
+                      child: Text(AppLocalizations.of(context)!.sign_in,
                           style: TextStyle(
                             color: Colors.blue[700],
                             fontSize: 26,
@@ -55,7 +56,7 @@ class LogInBody extends StatelessWidget {
                     style: const TextStyle(fontSize: 14),
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.account_circle),
-                      labelText: 'Địa chỉ Email',
+                      labelText: 'Email',
                       hintText: 'mail@example.com',
                       labelStyle: TextStyle(fontSize: 14, color: Colors.grey),
                       hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
@@ -67,7 +68,7 @@ class LogInBody extends StatelessWidget {
                     obscureText: true,
                     decoration: const InputDecoration(
                       prefixIcon: Icon(Icons.key),
-                      labelText: 'Mật khẩu',
+                      labelText: 'Password',
                       hintText: 'mail@example.com',
                       labelStyle: TextStyle(fontSize: 14, color: Colors.grey),
                       hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
@@ -82,9 +83,10 @@ class LogInBody extends StatelessWidget {
                             Navigator.pushNamed(
                                 context, AppRouter.forgotPassword);
                           },
-                          child: const Text(
-                            "Quên mật khẩu",
-                            style: TextStyle(fontWeight: FontWeight.normal),
+                          child: Text(
+                            AppLocalizations.of(context)!.forgot_password,
+                            style:
+                                const TextStyle(fontWeight: FontWeight.normal),
                           ))),
                   Container(
                     margin: const EdgeInsets.only(top: 20),
@@ -98,15 +100,15 @@ class LogInBody extends StatelessWidget {
                           Navigator.pushNamed(context, AppRouter.findingTutor);
                         },
                         child: Text(
-                          "Đăng nhập".toUpperCase(),
+                          AppLocalizations.of(context)!.sign_up.toUpperCase(),
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 16),
                         )),
                   ),
                   Container(
                       margin: const EdgeInsets.fromLTRB(0, 12, 0, 12),
-                      child: const Text(
-                        "Hoặc tiếp tục với",
+                      child: Text(
+                        AppLocalizations.of(context)!.or,
                       )),
                   Container(
                       margin: const EdgeInsets.symmetric(
@@ -135,12 +137,12 @@ class LogInBody extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Chưa có tài khoản"),
+                      Text(AppLocalizations.of(context)!.not_have_account),
                       TextButton(
                           onPressed: () {
                             Navigator.pushNamed(context, AppRouter.signUp);
                           },
-                          child: const Text("Đăng kí"))
+                          child: Text(AppLocalizations.of(context)!.sign_up))
                     ],
                   )
                 ],
