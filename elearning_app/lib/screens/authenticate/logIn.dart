@@ -1,9 +1,10 @@
 // ignore: file_names
+// ignore_for_file: must_be_immutable
+
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:elearning_app/screens/authenticate/signUp.dart';
-import 'package:elearning_app/screens/authenticate/forgetPassword.dart';
+import 'package:elearning_app/routers/routers.dart';
 
 class LogIn extends StatelessWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -78,11 +79,8 @@ class LogInBody extends StatelessWidget {
                       alignment: Alignment.topLeft,
                       child: TextButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const ForgetPassword()),
-                            );
+                            Navigator.pushNamed(
+                                context, AppRouter.forgotPassword);
                           },
                           child: const Text(
                             "Quên mật khẩu",
@@ -96,7 +94,9 @@ class LogInBody extends StatelessWidget {
                           backgroundColor:
                               const Color.fromARGB(255, 29, 137, 225),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, AppRouter.findingTutor);
+                        },
                         child: Text(
                           "Đăng nhập".toUpperCase(),
                           style: const TextStyle(
@@ -138,11 +138,7 @@ class LogInBody extends StatelessWidget {
                       const Text("Chưa có tài khoản"),
                       TextButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const LogIn()),
-                            );
+                            Navigator.pushNamed(context, AppRouter.signUp);
                           },
                           child: const Text("Đăng kí"))
                     ],

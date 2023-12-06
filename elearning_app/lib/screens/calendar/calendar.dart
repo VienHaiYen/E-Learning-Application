@@ -2,8 +2,6 @@
 
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
-import 'package:elearning_app/screens/tutor/widgets/comment_item.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 import './widgets/calendar_item.dart';
 

@@ -2,11 +2,8 @@
 
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/screens/my_course/widgets/my_course_item.dart';
-import 'package:elearning_app/screens/my_course/widgets/tutor_booking_item.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
-import 'package:elearning_app/widgets/dropdown.dart';
 
 class MyCourse extends StatelessWidget {
   MyCourse({super.key});

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/screens/my_course/widgets/tutor_booking_item.dart';
 
+// ignore: must_be_immutable
 class MyCourseItem extends StatelessWidget {
   MyCourseItem({super.key, this.status, this.color});
   bool isHovering = false;

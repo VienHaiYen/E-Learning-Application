@@ -2,10 +2,9 @@
 
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/widgets/course_item.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
-import 'package:elearning_app/widgets/dropdown.dart';
+// import 'package:elearning_app/widgets/dropdown.dart';
 
 class Courses extends StatelessWidget {
   Courses({super.key});
@@ -99,7 +98,6 @@ class CoursesBody extends StatelessWidget {
                 border: Border(
                     left: BorderSide(
                         width: 4, color: Color.fromARGB(255, 87, 86, 86)))),
-            // TODO: Làm thanh dọc đoạn văn bản trên
             child: const Text(
               "LiveTutor đã xây dựng nên các khóa học của các lĩnh vực trong cuộc sống chất lượng, bài bản và khoa học nhất cho những người đang có nhu cầu trau dồi thêm kiến thức về các lĩnh vực.",
               style: TextStyle(fontSize: 16),

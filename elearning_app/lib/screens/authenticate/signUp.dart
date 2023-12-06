@@ -1,18 +1,19 @@
 // ignore: file_names
+import 'package:elearning_app/routers/routers.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:elearning_app/screens/authenticate/logIn.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SignUpBody());
+    return Scaffold(appBar: MyAppBar(), body: SignUpBody());
   }
 }
 
+// ignore: must_be_immutable
 class SignUpBody extends StatelessWidget {
   SignUpBody({super.key});
 
@@ -35,7 +36,7 @@ class SignUpBody extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       child: Text("Đăng Kí",
                           style: TextStyle(
                             color: Colors.blue[700],
@@ -122,11 +123,7 @@ class SignUpBody extends StatelessWidget {
                       const Text("Đã có tài khoản"),
                       TextButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const LogIn()),
-                            );
+                            Navigator.pushNamed(context, AppRouter.logIn);
                           },
                           child: const Text("Đăng nhập"))
                     ],

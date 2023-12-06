@@ -1,6 +1,7 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/widgets/course_item.dart';
 
 import 'package:elearning_app/screens/tutor/tutor.dart';

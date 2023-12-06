@@ -1,3 +1,4 @@
+import 'package:elearning_app/screens/booking/booking.dart';
 import 'package:elearning_app/screens/unknown/unknown.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,9 @@ class AppRouter {
   // Tutor pages
   // TODO: check lai
   static const String tutor = '/tutor';
+
+// TODO: Not yet make UI for this page
+  static const String booking = '/booking';
 
   // Course pages
   static const String courses = '/courses';
@@ -85,6 +89,12 @@ class AppRouter {
               ),
         );
       // TODO: cosider Booking Page
+      case booking:
+        return MaterialPageRoute(
+          builder: (context) => const Booking(
+              // tutorId: settings.arguments as String,
+              ),
+        );
       // TODO: cosider Tutor review Page
       // TODO: cosider Writing review Page
 

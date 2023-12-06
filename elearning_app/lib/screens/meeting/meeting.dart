@@ -1,11 +1,9 @@
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 
-import 'package:flutter/material.dart';
-
 // TODO: Not setup or have element
+// ignore: must_be_immutable
 class Meeting extends StatelessWidget {
   Meeting({super.key});
 
@@ -13,9 +11,9 @@ class Meeting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
         appBar: MyAppBar(),
-        body: const Stack(children: [
+        body: Stack(children: [
           MeetingBody(),
           Positioned(bottom: 20, right: 20, child: GroupFixedButton())
         ]));

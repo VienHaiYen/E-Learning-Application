@@ -32,7 +32,7 @@ class CommentItem extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 12),
                 child: Avatar(
                     url: urlAvatar ??
-                        "https://sandbox.api.elearning_app.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
+                        "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
                     height: 35,
                     width: 35),
               ),

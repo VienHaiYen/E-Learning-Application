@@ -1,8 +1,8 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:elearning_app/routers/routers.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:elearning_app/screens/authenticate/logIn.dart';
 
 class ForgetPassword extends StatelessWidget {
   const ForgetPassword({Key? key}) : super(key: key);
@@ -46,8 +46,7 @@ class InputMail extends StatelessWidget {
           ),
           ElevatedButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const LogIn()));
+                Navigator.pushNamed(context, AppRouter.logIn);
               },
               child: const Text("Xác nhận"))
         ],

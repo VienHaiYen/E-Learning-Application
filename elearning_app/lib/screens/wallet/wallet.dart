@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 
+// ignore: must_be_immutable
 class Wallet extends StatelessWidget {
   Wallet({super.key});
 
@@ -90,8 +91,8 @@ class _WalletBodyState extends State<WalletBody> {
                       padding: const EdgeInsets.all(16.0),
                       child: TextFormField(
                         decoration: const InputDecoration(
-                            contentPadding: const EdgeInsets.all(16),
-                            border: const OutlineInputBorder(),
+                            contentPadding: EdgeInsets.all(16),
+                            border: OutlineInputBorder(),
                             hintText: 'Referral Code'),
                       ),
                     )
@@ -104,17 +105,16 @@ class _WalletBodyState extends State<WalletBody> {
             height: 16,
           ),
           // Transactions
-          Text(
+          const Text(
             'Transactions',
-            style: Theme.of(context).textTheme.headline6,
           ),
 
-          Column(
+          const Column(
             children: [
               Row(
                 children: [
-                  const Icon(Icons.arrow_downward_outlined),
-                  const SizedBox(
+                  Icon(Icons.arrow_downward_outlined),
+                  SizedBox(
                     width: 8,
                   ),
                   Expanded(
@@ -123,19 +123,18 @@ class _WalletBodyState extends State<WalletBody> {
                       children: [
                         Text(
                           'Book Keegan',
-                          style: Theme.of(context).textTheme.subtitle2,
                         ),
-                        const Text('2022-10-20')
+                        Text('2022-10-20')
                       ],
                     ),
                   ),
-                  const Text(
+                  Text(
                     '1 lesson',
                     style: TextStyle(color: Colors.redAccent),
                   )
                 ],
               ),
-              const SizedBox(
+              SizedBox(
                 height: 16,
               )
             ],

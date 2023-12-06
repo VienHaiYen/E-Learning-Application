@@ -1,9 +1,10 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:elearning_app/routers/routers.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/screens/menu_list/widgets/menu_tile.dart';
-import 'package:elearning_app/screens/menu_list/widgets/tutor_tile.dart';
+import 'package:elearning_app/screens/menu_list/widgets/user_tile.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 
 class MenuList extends StatelessWidget {
@@ -31,18 +32,40 @@ class MenuListBody extends StatelessWidget {
     // TODO: Set fited icon
     return ListView(
       children: [
-        TutorTile(),
+        UserTile(),
         MenuTile(
-            title: "Lịch học định kì", icon: const Icon(Icons.calendar_month)),
-        MenuTile(title: "Gia sư", icon: const Icon(Icons.calendar_month)),
-        MenuTile(title: "Lịch học", icon: const Icon(Icons.calendar_view_week)),
-        MenuTile(title: "Lịch sử", icon: const Icon(Icons.history)),
-        MenuTile(title: "Khóa học", icon: const Icon(Icons.school)),
-        MenuTile(title: "Khóa học của tôi", icon: const Icon(Icons.book)),
+            title: "Lịch học định kì",
+            icon: const Icon(Icons.calendar_month),
+            route: AppRouter.myCalendar),
+        MenuTile(
+            title: "Gia sư",
+            icon: const Icon(Icons.calendar_month),
+            route: AppRouter.findingTutor),
+        MenuTile(
+            title: "Lịch học",
+            icon: const Icon(Icons.calendar_view_week),
+            route: AppRouter.myCalendar),
+        MenuTile(
+            title: "Lịch sử",
+            icon: const Icon(Icons.history),
+            route: AppRouter.myHistory),
+        MenuTile(
+          title: "Khóa học",
+          icon: const Icon(Icons.school),
+          route: AppRouter.courses,
+        ),
+        MenuTile(
+            title: "Khóa học của tôi",
+            icon: const Icon(Icons.book),
+            route: AppRouter.myCourses),
         MenuTile(
             title: "Đăng ký làm gia sư",
-            icon: const Icon(Icons.calendar_month)),
-        MenuTile(title: "Đăng xuất", icon: const Icon(Icons.logout_outlined)),
+            icon: const Icon(Icons.calendar_month),
+            route: AppRouter.becomeTutor),
+        MenuTile(
+            title: "Đăng xuất",
+            icon: const Icon(Icons.logout_outlined),
+            route: AppRouter.logIn),
       ],
     );
   }

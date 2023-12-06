@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/widgets/avatar.dart';
 import 'package:elearning_app/widgets/star_rating.dart';
-import 'package:elearning_app/widgets/favorite_icon.dart';
 
 class TutorItem extends StatelessWidget {
   TutorItem({Key? key}) : super(key: key);
@@ -29,7 +27,7 @@ class TutorItem extends StatelessWidget {
                 padding: EdgeInsets.only(right: 12),
                 child: Avatar(
                     url:
-                        "https://sandbox.api.elearning_app.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
+                        "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
                     height: 100,
                     width: 100),
               ),
