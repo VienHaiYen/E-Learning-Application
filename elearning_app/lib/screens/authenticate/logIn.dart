@@ -1,14 +1,16 @@
 // ignore: file_names
 // ignore_for_file: must_be_immutable
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:elearning_app/routers/routers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:elearning_app/provider/auth_provider.dart';
 import 'package:elearning_app/services/auth_service.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:elearning_app/routers/routers.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({Key? key}) : super(key: key);
@@ -21,19 +23,63 @@ class _LogInState extends State<LogIn> {
   final TextEditingController _nameC = TextEditingController();
   final TextEditingController _passwordC = TextEditingController();
 
+  bool _isAuthenticating = true;
+  bool _isAuthenticated = false;
+
   final _googleSignIn = GoogleSignIn();
 
   // Login with name and password
-  void _handleLogIn(AuthProvider authProvider) async {}
+  void _handleLogIn(AuthProvider authProvider) async {
+    try {
+      await AuthService.logInApp(
+        email: _nameC.text,
+        password: _passwordC.text,
+        onSuccess: (user, token) async {
+          authProvider.logIn(user, token);
+
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString(
+            'refresh_token',
+            authProvider.token!.refresh!.token!,
+          );
+
+          setState(() {
+            _isAuthenticating = false;
+            _isAuthenticated = true;
+          });
+
+          Future.delayed(const Duration(seconds: 1), () {
+            Navigator.pushNamed(context, AppRouter.findingTutor);
+          });
+        },
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error Login: ${e.toString()}')),
+      );
+    }
+  }
 
   // Login with google
-  void _handleGoogleLogin(AuthProvider authProvider) async {}
+  void _handleGoogleLogin(AuthProvider authProvider) async {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Not working yet')),
+    );
+  }
 
   // Login with facebook
-  void _handleFacebookLogin(AuthProvider authProvider) async {}
+  void _handleFacebookLogin(AuthProvider authProvider) async {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Not working yet')),
+    );
+  }
 
   // Login with phone
-  void _handlePhoneLogin(AuthProvider authProvider) async {}
+  void _handlePhoneLogin(AuthProvider authProvider) async {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Not working yet')),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +131,7 @@ class _LogInState extends State<LogIn> {
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.key),
                         labelText: 'Password',
-                        hintText: 'mail@example.com',
+                        hintText: '********',
                         labelStyle: TextStyle(fontSize: 14, color: Colors.grey),
                         hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
                         // filled: true,
@@ -113,14 +159,14 @@ class _LogInState extends State<LogIn> {
                                 const Color.fromARGB(255, 29, 137, 225),
                           ),
                           onPressed: () {
-                            // Navigator.pushNamed(
-                            //     context, AppRouter.findingTutor);
                             _handleLogIn(authProvider);
                           },
                           child: Text(
                             AppLocalizations.of(context)!.sign_up.toUpperCase(),
                             style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
                           )),
                     ),
                     Container(
