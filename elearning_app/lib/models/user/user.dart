@@ -1,6 +1,6 @@
-import 'package:elearning_app/models/learn_topic.dart';
-import 'package:elearning_app/models/test_preparation.dart';
-import 'package:elearning_app/models/wallet_info.dart';
+import 'package:elearning_app/models/user/learn_topic.dart';
+import 'package:elearning_app/models/user/test_preparation.dart';
+import 'package:elearning_app/models/user/wallet_info.dart';
 
 class User {
   String? id;
