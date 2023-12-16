@@ -1,4 +1,5 @@
 import 'package:elearning_app/screens/booking/booking.dart';
+import 'package:elearning_app/screens/home/home.dart';
 import 'package:elearning_app/screens/unknown/unknown.dart';
 import 'package:flutter/material.dart';
 
@@ -30,6 +31,8 @@ class AppRouter {
   static const String forgotPassword = '/forgot-password';
 
   // Home page
+  static const String home = '/home';
+
   static const String findingTutor = '/finding-tutor';
   // TODO: Tutor screen, must add
   static const String tutorHome = '/tutor-home';
@@ -62,6 +65,10 @@ class AppRouter {
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case home:
+        return MaterialPageRoute(
+          builder: (context) => const Home(),
+        );
       case logIn:
         return MaterialPageRoute(
           builder: (context) => const LogIn(),

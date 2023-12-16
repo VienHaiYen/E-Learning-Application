@@ -49,7 +49,7 @@ class _LogInState extends State<LogIn> {
           });
 
           Future.delayed(const Duration(seconds: 1), () {
-            Navigator.pushNamed(context, AppRouter.findingTutor);
+            Navigator.pushNamed(context, AppRouter.home);
           });
         },
       );
@@ -162,7 +162,7 @@ class _LogInState extends State<LogIn> {
                             _handleLogIn(authProvider);
                           },
                           child: Text(
-                            AppLocalizations.of(context)!.sign_up.toUpperCase(),
+                            AppLocalizations.of(context)!.sign_in.toUpperCase(),
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
