@@ -14,7 +14,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var selectedIndex = 0;
-  var screens = [const FindingTutor(), Courses(), const TutorHome()];
+  var screens = [const FindingTutor(), CoursesView(), const TutorHome()];
 
   @override
   Widget build(BuildContext context) {

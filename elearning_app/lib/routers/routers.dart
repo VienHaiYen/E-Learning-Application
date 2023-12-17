@@ -107,7 +107,7 @@ class AppRouter {
 
       case courses:
         return MaterialPageRoute(
-          builder: (context) => Courses(),
+          builder: (context) => CoursesView(),
         );
       case courseDetail:
         return MaterialPageRoute(
