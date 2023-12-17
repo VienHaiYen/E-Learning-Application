@@ -1,4 +1,4 @@
-import 'package:elearning_app/screens/courses/courses.dart';
+import 'package:elearning_app/screens/courses_view/courses_view.dart';
 import 'package:elearning_app/screens/findingTutor/findingTutor.dart';
 import 'package:elearning_app/screens/tutorHome/tutorHome.dart';
 import 'package:flutter/material.dart';

@@ -9,11 +9,11 @@ import 'package:elearning_app/screens/authenticate/forgetPassword.dart';
 import 'package:elearning_app/screens/findingTutor/findingTutor.dart';
 import 'package:elearning_app/screens/tutorHome/tutorHome.dart';
 import 'package:elearning_app/screens/tutor_view/tutor_view.dart';
-import 'package:elearning_app/screens/calendar/calendar.dart';
+import 'package:elearning_app/screens/calendar_view/calendar_view.dart';
 import 'package:elearning_app/screens/calendar_detail/calendar_detail.dart';
 import 'package:elearning_app/screens/history/history.dart';
 import 'package:elearning_app/screens/history_detail/history_detail.dart';
-import 'package:elearning_app/screens/courses/courses.dart';
+import 'package:elearning_app/screens/courses_view/courses_view.dart';
 import 'package:elearning_app/screens/my_course/my_course.dart';
 // import 'package:elearning_app/screens/menu_list/menu_list.dart';
 import 'package:elearning_app/screens/wallet/wallet.dart';
@@ -126,7 +126,7 @@ class AppRouter {
         );
       case myCalendar:
         return MaterialPageRoute(
-          builder: (context) => const Calendar(),
+          builder: (context) => const CalendarView(),
         );
       // TODO: Not yet write UI for this page
       case calendarDetail:
