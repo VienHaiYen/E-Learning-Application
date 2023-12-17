@@ -4,7 +4,7 @@ import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/widgets/course_item.dart';
 
-import 'package:elearning_app/screens/tutor/tutor.dart';
+import 'package:elearning_app/screens/tutor_view/tutor_view.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -158,7 +158,7 @@ class CourseDetailBody extends StatelessWidget {
         TextButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Tutor()));
+                  MaterialPageRoute(builder: (context) => const TutorView()));
             },
             child: Text(AppLocalizations.of(context)!.more_info)),
       ],

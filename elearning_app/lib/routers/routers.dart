@@ -8,7 +8,7 @@ import 'package:elearning_app/screens/authenticate/logIn.dart';
 import 'package:elearning_app/screens/authenticate/forgetPassword.dart';
 import 'package:elearning_app/screens/findingTutor/findingTutor.dart';
 import 'package:elearning_app/screens/tutorHome/tutorHome.dart';
-import 'package:elearning_app/screens/tutor/tutor.dart';
+import 'package:elearning_app/screens/tutor_view/tutor_view.dart';
 import 'package:elearning_app/screens/calendar/calendar.dart';
 import 'package:elearning_app/screens/calendar_detail/calendar_detail.dart';
 import 'package:elearning_app/screens/history/history.dart';
@@ -91,7 +91,7 @@ class AppRouter {
         );
       case tutor:
         return MaterialPageRoute(
-          builder: (context) => const Tutor(
+          builder: (context) => const TutorView(
               // tutorId: settings.arguments as String,
               ),
         );

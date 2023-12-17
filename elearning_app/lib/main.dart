@@ -13,7 +13,7 @@ import "package:elearning_app/routers/routers.dart";
 import 'package:elearning_app/screens/authenticate/signUp.dart';
 import 'package:elearning_app/screens/authenticate/logIn.dart';
 import 'package:elearning_app/screens/findingTutor/findingTutor.dart';
-import 'package:elearning_app/screens/tutor/tutor.dart';
+import 'package:elearning_app/screens/tutor_view/tutor_view.dart';
 import 'package:elearning_app/screens/calendar/calendar.dart';
 import 'package:elearning_app/screens/history/history.dart';
 import 'package:elearning_app/screens/courses/courses.dart';
