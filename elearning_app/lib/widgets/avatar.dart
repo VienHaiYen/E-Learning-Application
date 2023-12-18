@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class Avatar extends StatelessWidget {
@@ -6,15 +7,24 @@ class Avatar extends StatelessWidget {
   final String? url;
   final double? width;
   final double? height;
-
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: height,
-        width: width,
-        child: CircleAvatar(
-            backgroundColor: Colors.white,
-            backgroundImage: NetworkImage(url ??
-                "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg")));
+    return Container(
+      height: height,
+      width: width,
+      clipBehavior: Clip.hardEdge,
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+      ),
+      child: CachedNetworkImage(
+        imageUrl: url ?? '',
+        fit: BoxFit.cover,
+        errorWidget: (context, error, stackTrace) => const Icon(
+          Icons.broken_image,
+          color: Color.fromARGB(255, 165, 165, 165),
+          size: 32,
+        ),
+      ),
+    );
   }
 }

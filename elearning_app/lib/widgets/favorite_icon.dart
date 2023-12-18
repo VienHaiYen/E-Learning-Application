@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class FavoriteIcon extends StatelessWidget {
   final bool isInterested;
+  final VoidCallback? onPressed;
 
-  const FavoriteIcon({super.key, this.isInterested = false});
+  const FavoriteIcon({super.key, required this.isInterested, this.onPressed});
 
   Widget buildFavorite(BuildContext context) {
     Icon icon;
@@ -25,6 +26,9 @@ class FavoriteIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return buildFavorite(context);
+    return IconButton(
+      onPressed: onPressed,
+      icon: buildFavorite(context),
+    );
   }
 }

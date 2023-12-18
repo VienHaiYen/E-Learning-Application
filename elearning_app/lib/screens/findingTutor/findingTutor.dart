@@ -36,8 +36,6 @@ class _FindingTutorState extends State<FindingTutor> {
 
   Future<void> _fetchRecommendedTutors(AuthProvider authProvider) async {
     final String token = authProvider.token?.access?.token as String;
-    print("456");
-    print(token);
 
     final topics = await UserService.getLearningTopic(token);
     final tests = await UserService.getTestPreparation(token);
@@ -73,9 +71,7 @@ class _FindingTutorState extends State<FindingTutor> {
   @override
   Widget build(BuildContext context) {
     final authProvider = context.watch<AuthProvider>();
-    print(authProvider.token);
     if (_isLoading && authProvider.token != null) {
-      print("object");
       _fetchRecommendedTutors(authProvider);
     }
 
@@ -202,7 +198,6 @@ class _FindingTutorState extends State<FindingTutor> {
                 // _isLoading
                 //     ? const Center(child: CircularProgressIndicator())
                 //     :
-                Text(_tutors.toString()),
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),

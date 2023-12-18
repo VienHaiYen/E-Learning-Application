@@ -1,16 +1,29 @@
 import 'package:elearning_app/models/tutor/tutor.dart';
+import 'package:elearning_app/models/tutor/tutor_info.dart';
+import 'package:elearning_app/provider/auth_provider.dart';
 import 'package:elearning_app/routers/routers.dart';
+import 'package:elearning_app/services/tutor_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:elearning_app/widgets/avatar.dart';
 import 'package:elearning_app/widgets/star_rating.dart';
 import 'package:elearning_app/widgets/favorite_icon.dart';
 
-class TutorItem extends StatelessWidget {
-  TutorItem({
+class TutorItem extends StatefulWidget {
+  const TutorItem({
+    super.key,
     required this.tutor,
   });
   final Tutor tutor;
+
+  @override
+  _TutorItemState createState() => _TutorItemState();
+}
+
+class _TutorItemState extends State<TutorItem> {
+  TutorInfo? _tutorInfo;
+  List<String> _specialties = [];
 
   final searchOptions = [
     "Tiếng Anh cho trẻ em",
@@ -21,11 +34,49 @@ class TutorItem extends StatelessWidget {
     "ETC"
   ];
 
+  Future<void> _fetchTutorInfo(AuthProvider authProvider) async {
+    final String token = authProvider.token?.access?.token as String;
+
+    final learnTopics = authProvider.learnTopics
+        .where((topic) =>
+            _tutorInfo?.specialties?.split(',').contains(topic.key) ?? false)
+        .map((e) => e.name ?? 'null');
+    final testPreparations = authProvider.testPreparations
+        .where((test) =>
+            _tutorInfo?.specialties?.split(',').contains(test.key) ?? false)
+        .map((e) => e.name ?? 'null');
+    _specialties = [...learnTopics, ...testPreparations];
+
+    final result = await TutorService.getTutorInfoById(
+      token: token,
+      userId: widget.tutor.userId ?? '',
+    );
+
+    if (mounted) {
+      setState(() {
+        _tutorInfo = result;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final authProvider = context.watch<AuthProvider>();
+
+    if (authProvider.token != null) {
+      _fetchTutorInfo(authProvider);
+    }
+
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, AppRouter.tutor);
+        Navigator.pushNamed(
+          context,
+          AppRouter.tutor,
+          arguments: {
+            'userId': widget.tutor.userId,
+            'tutor': widget.tutor,
+          },
+        );
       },
       child: Container(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -35,53 +86,73 @@ class TutorItem extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(20))),
         child: Column(
           children: [
-            const Row(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(right: 12),
+                  padding: const EdgeInsets.only(right: 12),
                   child: Avatar(
-                      url:
-                          "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
-                      height: 50,
-                      width: 50),
+                      url: widget.tutor.avatar ?? '', height: 50, width: 50),
                 ),
                 Expanded(
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                      Text("Keeganss",
-                          style: TextStyle(
+                      Text(widget.tutor.name ?? '',
+                          style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w600)),
                       // TODO: Add country image
                       Text(
-                        "Tunisia",
+                        widget.tutor.country ?? '',
                         textAlign: TextAlign.start,
                       ),
                       StarRating(
-                        rating: 4,
+                        rating: widget.tutor.rating ?? 0,
                       ),
                     ])),
-                FavoriteIcon(isInterested: true)
+                FavoriteIcon(
+                    isInterested: _tutorInfo?.isFavorite ?? false,
+                    onPressed: () async {
+                      if (authProvider.token != null) {
+                        final String accessToken =
+                            authProvider.token?.access?.token as String;
+                        await TutorService.addTutorToFavorite(
+                          token: accessToken,
+                          userId: widget.tutor.userId ?? '',
+                        );
+                        _fetchTutorInfo(authProvider);
+                      }
+                    })
               ],
             ),
             Wrap(
               spacing: 4,
               runSpacing: -20,
-              children: [
-                ...searchOptions.map((option) {
-                  return GFButton(
-                    onPressed: null,
-                    text: option,
-                    color: const Color.fromARGB(255, 64, 135, 194),
-                    shape: GFButtonShape.pills,
-                    size: 20,
-                  );
-                }).toList()
-              ],
+
+              children: List<Widget>.generate(
+                _specialties.length,
+                (index) => GFButton(
+                  onPressed: null,
+                  text: _specialties[index],
+                  color: const Color.fromARGB(255, 64, 135, 194),
+                  shape: GFButtonShape.pills,
+                  size: 20,
+                ),
+              ),
+              // [
+              //   ...searchOptions.map((option) {
+              //     return GFButton(
+              //       onPressed: null,
+              //       text: option,
+              //       color: const Color.fromARGB(255, 64, 135, 194),
+              //       shape: GFButtonShape.pills,
+              //       size: 20,
+              //     );
+              //   }).toList()
+              // ],
             ),
-            const Text(
-              "I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia.",
+            Text(
+              widget.tutor.bio ?? '',
               maxLines: 4,
               overflow: TextOverflow.ellipsis,
             ),

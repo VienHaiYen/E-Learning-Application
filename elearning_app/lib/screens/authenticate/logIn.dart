@@ -48,8 +48,7 @@ class _LogInState extends State<LogIn> {
             _isAuthenticating = false;
             _isAuthenticated = true;
           });
-          print("object");
-          print(authProvider.token!.refresh!.token!.toString());
+          // print(authProvider.token!.refresh!.token!.toString());
           Future.delayed(const Duration(seconds: 1), () {
             Navigator.pushNamed(context, AppRouter.home);
           });
@@ -86,7 +85,6 @@ class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
     final authProvider = context.watch<AuthProvider>();
-    final appProvider = context.watch<AppProvider>();
     return Scaffold(
       appBar: MyAppBar(),
       body: Container(
