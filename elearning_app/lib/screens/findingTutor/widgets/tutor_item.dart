@@ -1,3 +1,4 @@
+import 'package:elearning_app/models/tutor/tutor.dart';
 import 'package:elearning_app/routers/routers.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
@@ -6,7 +7,10 @@ import 'package:elearning_app/widgets/star_rating.dart';
 import 'package:elearning_app/widgets/favorite_icon.dart';
 
 class TutorItem extends StatelessWidget {
-  TutorItem({Key? key}) : super(key: key);
+  TutorItem({
+    required this.tutor,
+  });
+  final Tutor tutor;
 
   final searchOptions = [
     "Tiếng Anh cho trẻ em",

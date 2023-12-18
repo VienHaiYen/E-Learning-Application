@@ -1,3 +1,5 @@
+import 'package:elearning_app/provider/app_provider.dart';
+import 'package:elearning_app/provider/auth_provider.dart';
 import 'package:elearning_app/routers/routers.dart';
 import 'package:elearning_app/screens/authenticate/forgetPassword.dart';
 import 'package:elearning_app/screens/home/home.dart';
@@ -24,23 +26,34 @@ import 'package:elearning_app/screens/meeting/meeting.dart';
 import 'package:elearning_app/screens/course_detail/course_detail.dart';
 
 import 'package:elearning_app/widgets/my_app_bar.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MaterialApp(
-      title: 'Lettutor',
-      debugShowCheckedModeBanner: false,
-      locale: const Locale('vi'),
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: L10n.all,
-      theme: AppThemes.lightTheme,
-      darkTheme: AppThemes.darkTheme,
-      onGenerateRoute: AppRouter.generateRoute,
-      home: MyApp()));
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (_) => AppProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (_) => AuthProvider(),
+      ),
+    ],
+    child: MaterialApp(
+        title: 'Lettutor',
+        debugShowCheckedModeBanner: false,
+        locale: const Locale('vi'),
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: L10n.all,
+        theme: AppThemes.lightTheme,
+        darkTheme: AppThemes.darkTheme,
+        onGenerateRoute: AppRouter.generateRoute,
+        home: MyApp()),
+  ));
 }
 
 class MyApp extends StatefulWidget {

@@ -1,9 +1,10 @@
 // ignore: file_names
 // ignore_for_file: must_be_immutable
+import 'package:elearning_app/provider/app_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:elearning_app/routers/routers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:provider/provider.dart';
 import 'package:elearning_app/provider/auth_provider.dart';
 import 'package:elearning_app/services/auth_service.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
@@ -47,7 +48,8 @@ class _LogInState extends State<LogIn> {
             _isAuthenticating = false;
             _isAuthenticated = true;
           });
-
+          print("object");
+          print(authProvider.token!.refresh!.token!.toString());
           Future.delayed(const Duration(seconds: 1), () {
             Navigator.pushNamed(context, AppRouter.home);
           });
@@ -83,7 +85,8 @@ class _LogInState extends State<LogIn> {
 
   @override
   Widget build(BuildContext context) {
-    AuthProvider authProvider = AuthProvider();
+    final authProvider = context.watch<AuthProvider>();
+    final appProvider = context.watch<AppProvider>();
     return Scaffold(
       appBar: MyAppBar(),
       body: Container(

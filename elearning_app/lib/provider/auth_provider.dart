@@ -28,6 +28,7 @@ class AuthProvider extends ChangeNotifier {
   void logIn(User user, Token token) {
     currentUser = user;
     this.token = token;
+    // print(token.access!.token);
     notifyListeners();
   }
 
