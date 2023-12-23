@@ -57,10 +57,7 @@ class BookingInfo {
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     recordUrl = json['recordUrl'];
-    // cancelReasonId = json['cancelReasonId'];
-    // lessonPlanId = json['lessonPlanId'];
-    // cancelNote = json['cancelNote'];
-    // calendarId = json['calendarId'];
+
     isDeleted = json['isDeleted'];
     calendarDetailInfo = json['calendarDetailInfo'] != null
         ? CalendarDetail.fromJson(json['calendarDetailInfo'])
