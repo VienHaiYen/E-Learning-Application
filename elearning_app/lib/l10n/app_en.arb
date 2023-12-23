@@ -90,5 +90,9 @@
     "chat":"Chat",
     "lesson_require":"Requirement",
     "lesson_require_edit":"Edit requirement",
-    "report":"Report"
+    "report":"Report",
+
+    "education":"Education",
+    "link_more": "Link"
+
 }

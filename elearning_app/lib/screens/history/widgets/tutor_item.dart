@@ -11,7 +11,7 @@ class TutorItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, AppRouter.tutor);
+        Navigator.pushNamed(context, AppRouter.tutorView);
       },
       child: Container(
         color: Colors.white,

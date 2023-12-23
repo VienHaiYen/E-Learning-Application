@@ -91,5 +91,8 @@
     "chat":"Nhắn tin",
     "lesson_require":"Yêu cầu cho buổi học",
     "lesson_require_edit":"Chỉnh sửa yêu cầu",
-    "report":"Báo cáo"
+    "report":"Báo cáo",
+
+    "education":"Học vấn",
+    "link_more": "Tìm hiểu"
 }

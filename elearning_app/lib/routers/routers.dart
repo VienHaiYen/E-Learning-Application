@@ -1,3 +1,4 @@
+import 'package:elearning_app/models/tutor/tutor.dart';
 import 'package:elearning_app/screens/booking/booking.dart';
 import 'package:elearning_app/screens/home/home.dart';
 import 'package:elearning_app/screens/unknown/unknown.dart';
@@ -39,7 +40,7 @@ class AppRouter {
 
   // Tutor pages
   // TODO: check lai
-  static const String tutor = '/tutor';
+  static const String tutorView = '/tutor-view';
 
 // TODO: Not yet make UI for this page
   static const String booking = '/booking';
@@ -89,11 +90,15 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const TutorHome(),
         );
-      case tutor:
+      case tutorView:
+        final args = settings.arguments as Map<String, dynamic>;
+        print(args["tutor"].userId);
+        print("123789");
         return MaterialPageRoute(
-          builder: (context) => const TutorView(
-              // tutorId: settings.arguments as String,
-              ),
+          builder: (context) => TutorView(
+            tutor: args["tutor"],
+            userId: args["userId"],
+          ),
         );
       // TODO: cosider Booking Page
       case booking:

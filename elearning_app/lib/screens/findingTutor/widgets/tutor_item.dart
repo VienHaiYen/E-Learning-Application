@@ -25,15 +25,6 @@ class _TutorItemState extends State<TutorItem> {
   TutorInfo? _tutorInfo;
   List<String> _specialties = [];
 
-  final searchOptions = [
-    "Tiếng Anh cho trẻ em",
-    "Tiếng Anh cho công việc",
-    "Giao tiếp",
-    "FLYERS",
-    "Toeic",
-    "ETC"
-  ];
-
   Future<void> _fetchTutorInfo(AuthProvider authProvider) async {
     final String token = authProvider.token?.access?.token as String;
 
@@ -69,14 +60,10 @@ class _TutorItemState extends State<TutorItem> {
 
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          AppRouter.tutor,
-          arguments: {
-            'userId': widget.tutor.userId,
-            'tutor': widget.tutor,
-          },
-        );
+        print("23");
+        print(widget.tutor.userId);
+        Navigator.of(context).pushNamed(AppRouter.tutorView,
+            arguments: {"userId": widget.tutor.userId, "tutor": widget.tutor});
       },
       child: Container(
         padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -128,7 +115,6 @@ class _TutorItemState extends State<TutorItem> {
             Wrap(
               spacing: 4,
               runSpacing: -20,
-
               children: List<Widget>.generate(
                 _specialties.length,
                 (index) => GFButton(
@@ -139,17 +125,6 @@ class _TutorItemState extends State<TutorItem> {
                   size: 20,
                 ),
               ),
-              // [
-              //   ...searchOptions.map((option) {
-              //     return GFButton(
-              //       onPressed: null,
-              //       text: option,
-              //       color: const Color.fromARGB(255, 64, 135, 194),
-              //       shape: GFButtonShape.pills,
-              //       size: 20,
-              //     );
-              //   }).toList()
-              // ],
             ),
             Text(
               widget.tutor.bio ?? '',

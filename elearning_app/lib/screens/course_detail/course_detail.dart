@@ -157,8 +157,8 @@ class CourseDetailBody extends StatelessWidget {
         Text(tutorName),
         TextButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const TutorView()));
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => const TutorView()));
             },
             child: Text(AppLocalizations.of(context)!.more_info)),
       ],
