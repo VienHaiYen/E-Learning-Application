@@ -129,21 +129,21 @@ class _TutorViewState extends State<TutorView> {
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                Text(_tutorInfo?.user?.name ?? '',
+                                Text(_tutorInfo.user?.name ?? '',
                                     style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w600)),
                                 // TODO: Add country image
                                 Text(
-                                  _tutorInfo?.user?.country ?? '',
+                                  _tutorInfo.user?.country ?? '',
                                   textAlign: TextAlign.start,
                                 ),
                                 StarRating(
-                                  rating: _tutorInfo?.rating ?? 0,
+                                  rating: _tutorInfo.rating ?? 0,
                                 ),
                               ])),
                           FavoriteIcon(
-                              isInterested: _tutorInfo?.isFavorite ?? false,
+                              isInterested: _tutorInfo.isFavorite ?? false,
                               onPressed: () async {
                                 if (authProvider.token != null) {
                                   final String accessToken = authProvider
@@ -172,7 +172,7 @@ class _TutorViewState extends State<TutorView> {
                         ),
                       ),
                       Text(
-                        _tutorInfo?.bio ?? '',
+                        _tutorInfo.bio ?? '',
                         maxLines: 4,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -185,7 +185,7 @@ class _TutorViewState extends State<TutorView> {
                               children: [
                                 FavoriteIcon(
                                     isInterested:
-                                        _tutorInfo?.isFavorite ?? false,
+                                        _tutorInfo.isFavorite ?? false,
                                     onPressed: () async {
                                       if (authProvider.token != null) {
                                         final String accessToken = authProvider
@@ -198,8 +198,8 @@ class _TutorViewState extends State<TutorView> {
                                       }
                                     }),
                                 Text(
-                                  "Yêu thích",
-                                  style: TextStyle(color: Colors.blue),
+                                  AppLocalizations.of(context)!.favourite,
+                                  style: const TextStyle(color: Colors.blue),
                                 )
                               ],
                             ),
@@ -247,14 +247,15 @@ class _TutorViewState extends State<TutorView> {
                   padding: const EdgeInsets.only(top: 8),
                   child: Text(
                     AppLocalizations.of(context)!.education,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.only(top: 8),
                   child: Text(
                     _tutorInfo.education ?? 'No education',
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
                 Container(

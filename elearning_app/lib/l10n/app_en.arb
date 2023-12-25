@@ -93,6 +93,8 @@
     "report":"Report",
 
     "education":"Education",
-    "link_more": "Link"
+    "link_more": "Link",
+
+    "favourite":"Favourite"
 
 }

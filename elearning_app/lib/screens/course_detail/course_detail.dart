@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elearning_app/models/course/course.dart';
 import 'package:elearning_app/models/course/course_topic.dart';
@@ -312,7 +310,7 @@ class _CourseDetailState extends State<CourseDetail> {
                   height: 8,
                 ),
                 subHeading(context, Icons.my_library_books_outlined,
-                    '${courseDetail.topics!.length ?? ''} topics'),
+                    '${courseDetail.topics!.length} topics'),
 
                 // List topic
                 header(context, 'List Topic'),

@@ -1,4 +1,3 @@
-import 'package:elearning_app/models/tutor/tutor.dart';
 import 'package:elearning_app/screens/booking/booking.dart';
 import 'package:elearning_app/screens/home/home.dart';
 import 'package:elearning_app/screens/unknown/unknown.dart';
