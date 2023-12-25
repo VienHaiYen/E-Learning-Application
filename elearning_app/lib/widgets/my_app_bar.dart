@@ -1,3 +1,4 @@
+import 'package:elearning_app/routers/routers.dart';
 import 'package:flutter/material.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -11,6 +12,24 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
       ),
       backgroundColor: Colors.blue,
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.map_outlined,
+            color: Colors.white,
+          ),
+        ),
+        IconButton(
+          onPressed: () {
+            Navigator.pushNamed(context, AppRouter.menuList);
+          },
+          icon: const Icon(
+            Icons.menu_outlined,
+            color: Colors.white,
+          ),
+        ),
+      ],
     );
   }
 

@@ -15,7 +15,7 @@ import 'package:elearning_app/screens/history/history.dart';
 import 'package:elearning_app/screens/history_detail/history_detail.dart';
 import 'package:elearning_app/screens/courses_view/courses_view.dart';
 import 'package:elearning_app/screens/my_course/my_course.dart';
-// import 'package:elearning_app/screens/menu_list/menu_list.dart';
+import 'package:elearning_app/screens/menu_list/menu_list.dart';
 import 'package:elearning_app/screens/wallet/wallet.dart';
 import 'package:elearning_app/screens/meeting/meeting.dart';
 import 'package:elearning_app/screens/course_detail/course_detail.dart';
@@ -62,6 +62,7 @@ class AppRouter {
 
   // Setting page
   static const String setting = '/setting';
+  static const String menuList = '/menu-list';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -96,6 +97,10 @@ class AppRouter {
             tutor: args["tutor"],
             userId: args["userId"],
           ),
+        );
+      case menuList:
+        return MaterialPageRoute(
+          builder: (context) => MenuList(),
         );
       // TODO: cosider Booking Page
       case booking:

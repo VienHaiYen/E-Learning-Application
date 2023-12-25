@@ -28,14 +28,24 @@ class BottomNavbar extends StatelessWidget {
         elevation: 0,
         child: BottomNavigationBar(
           elevation: 0,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.pink,
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(Icons.co_present_outlined), label: 'Tutor'),
+                icon: Icon(Icons.co_present_outlined),
+                backgroundColor: Colors.black26,
+                label: 'Tutor'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.book_outlined), label: 'Courses'),
+                icon: Icon(Icons.book_outlined),
+                backgroundColor: Colors.black26,
+                label: 'Courses'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline), label: 'Profile'),
+                icon: Icon(Icons.schedule_outlined),
+                backgroundColor: Colors.black26,
+                label: 'Calendar'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline),
+                backgroundColor: Colors.black26,
+                label: 'Profile'),
           ],
           currentIndex: selectedIndex,
           onTap: onClicked,
