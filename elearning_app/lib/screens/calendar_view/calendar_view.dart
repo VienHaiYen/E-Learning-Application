@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:elearning_app/screens/calendar_view/widgets/upcoming_view.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
@@ -111,9 +112,8 @@ class _CalendarViewState extends State<CalendarView> {
                       Expanded(
                         child: TabBarView(
                           children: [
-                            Text("1"),
+                            UpcomingView(),
                             Text("2"),
-                            // UpcomingView(),
                             // HistoryView(),
                           ],
                         ),
