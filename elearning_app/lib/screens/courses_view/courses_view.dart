@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:elearning_app/screens/calendar_view/widgets/tutor_item.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/widgets/course_item.dart';
@@ -66,7 +67,7 @@ class _CoursesViewState extends State<CoursesView> {
                   Expanded(
                     child: TabBarView(children: [
                       // Here goes the first tab
-                      Text("4566"),
+                      TutorItem(),
                       // Here goes the second tab
                       Padding(
                         padding: const EdgeInsets.all(16),
