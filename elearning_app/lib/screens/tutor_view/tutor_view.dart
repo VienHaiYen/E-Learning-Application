@@ -1,6 +1,3 @@
-// ignore_for_file: must_be_immutable
-import 'dart:math';
-
 import 'package:chewie/chewie.dart';
 import 'package:elearning_app/models/tutor/tutor.dart';
 import 'package:elearning_app/models/tutor/tutor_feedback.dart';

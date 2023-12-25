@@ -1,12 +1,6 @@
-// ignore_for_file: must_be_immutable
-
-import 'package:elearning_app/screens/calendar_view/widgets/tutor_item.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:elearning_app/widgets/course_item.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
-// import 'package:elearning_app/widgets/dropdown.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:elearning_app/screens/courses_view/widgets/course_list.dart';
 
 class CoursesView extends StatefulWidget {

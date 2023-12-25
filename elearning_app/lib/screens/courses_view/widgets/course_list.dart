@@ -4,7 +4,7 @@ import 'package:elearning_app/provider/auth_provider.dart';
 import 'package:elearning_app/services/course_service.dart';
 import 'package:provider/provider.dart';
 
-import './course_cart.dart';
+import 'course_card.dart';
 
 const itemsPerPage = [
   5,

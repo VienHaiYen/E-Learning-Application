@@ -10,7 +10,9 @@ import 'package:elearning_app/widgets/group_fixed_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CourseDetail extends StatelessWidget {
-  CourseDetail({super.key});
+  CourseDetail({super.key, required this.courseId});
+
+  final String courseId;
 
   TextEditingController courseC = TextEditingController();
 

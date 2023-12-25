@@ -29,7 +29,7 @@ class CourseCard extends StatelessWidget {
         Navigator.pushNamed(
           context,
           AppRouter.courseDetail,
-          arguments: course.id ?? 'null courseId',
+          arguments: {'courseId': course.id ?? 'null courseId'},
         );
       },
       child: Card(

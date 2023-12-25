@@ -92,8 +92,6 @@ class AppRouter {
         );
       case tutorView:
         final args = settings.arguments as Map<String, dynamic>;
-        print(args["tutor"].userId);
-        print("123789");
         return MaterialPageRoute(
           builder: (context) => TutorView(
             tutor: args["tutor"],
@@ -115,10 +113,11 @@ class AppRouter {
           builder: (context) => CoursesView(),
         );
       case courseDetail:
+        final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
           builder: (context) => CourseDetail(
-              // courseId: settings.arguments as String,
-              ),
+            courseId: args["courseId"],
+          ),
         );
 
       // TODO: cosider Topic Page

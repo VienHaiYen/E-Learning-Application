@@ -34,10 +34,6 @@ class BookingInfo {
     this.createdAt,
     this.updatedAt,
     this.recordUrl,
-    // this.cancelReasonId,
-    // this.lessonPlanId,
-    // this.cancelNote,
-    // this.calendarId,
     this.isDeleted,
     this.calendarDetailInfo,
     this.classReview,
@@ -82,10 +78,6 @@ class BookingInfo {
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
     data['recordUrl'] = recordUrl;
-    // data['cancelReasonId'] = cancelReasonId;
-    // data['lessonPlanId'] = lessonPlanId;
-    // data['cancelNote'] = cancelNote;
-    // data['calendarId'] = calendarId;
     data['isDeleted'] = isDeleted;
     if (calendarDetailInfo != null) {
       data['calendarDetailInfo'] = calendarDetailInfo!.toJson();
