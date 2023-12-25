@@ -1,12 +1,26 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elearning_app/models/course/course.dart';
+import 'package:elearning_app/models/course/course_topic.dart';
+import 'package:elearning_app/provider/auth_provider.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:elearning_app/widgets/course_item.dart';
 import 'package:elearning_app/services/course_service.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+final courseLevels = {
+  '0': 'Any level',
+  '1': 'Beginner',
+  '2': 'High Beginner',
+  '3': 'Pre-Intermediate',
+  '4': 'Intermediate',
+  '5': 'Upper-Intermediate',
+  '6': 'Advanced',
+  '7': 'Proficiency'
+};
 
 class CourseDetail extends StatefulWidget {
   CourseDetail({super.key, required this.courseId});
@@ -28,7 +42,7 @@ class _CourseDetailState extends State<CourseDetail> {
   Future<void> _fetchCourseDetail(String token) async {
     final result = await CourseService.getCourseDetailById(
       token: token,
-      courseId: courseId,
+      courseId: widget.courseId,
     );
 
     setState(() {
@@ -39,14 +53,13 @@ class _CourseDetailState extends State<CourseDetail> {
 
   @override
   Widget build(BuildContext context) {
-    const topics = [
-      'The Internet',
-      'Artificial Intelligence',
-      'Social Media',
-      'Internet Privacy',
-      'Live Streaming'
-    ];
+    final authProvider = context.watch<AuthProvider>();
 
+    if (_isLoading && authProvider.token != null) {
+      courseId = widget.courseId;
+      final String accessToken = authProvider.token?.access?.token as String;
+      _fetchCourseDetail(accessToken);
+    }
     Widget header(BuildContext context, String header) {
       return Row(
         children: [
@@ -128,7 +141,7 @@ class _CourseDetailState extends State<CourseDetail> {
       );
     }
 
-    Widget topicList() {
+    Widget topicList(List<CourseTopic> topics) {
       return ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
@@ -151,7 +164,7 @@ class _CourseDetailState extends State<CourseDetail> {
                     const SizedBox(
                       height: 8,
                     ),
-                    Text(topics[index],
+                    Text(topics[index].name ?? 'null.',
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold)),
                   ],
@@ -198,28 +211,81 @@ class _CourseDetailState extends State<CourseDetail> {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
-                CourseItem(
-                    bottomWidget: Row(
-                  children: [
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Khám phá'),
+                Container(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: GestureDetector(
+                      onTap: null,
+                      child: Card(
+                        elevation: 8,
+                        child: SizedBox(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CachedNetworkImage(
+                                imageUrl: courseDetail.imageUrl ?? '',
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => const Icon(
+                                  Icons.image_rounded,
+                                  size: 48,
+                                  color: Colors.grey,
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(
+                                  Icons.error_outline_rounded,
+                                  size: 32,
+                                  color: Colors.redAccent,
+                                ),
+                              ),
+                              Container(
+                                padding:
+                                    const EdgeInsets.fromLTRB(10, 10, 10, 15),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      courseDetail.name ?? "null name",
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                          fontSize: 19,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Container(
+                                      margin: const EdgeInsets.only(
+                                          top: 8, bottom: 15),
+                                      child: Text(
+                                        courseDetail.description ?? 'null.',
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.grey[800]),
+                                      ),
+                                    ),
+                                    // bottomWidget ??
+                                    Text(
+                                      'Any level',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.grey[800]),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
-                )),
+                    )),
 
                 // Overview
                 header(context, 'Overview'),
                 const SizedBox(
                   height: 8,
                 ),
-                description(
-                    context,
-                    Icons.question_mark_outlined,
-                    'Why take this course',
-                    "Our world is rapidly changing thanks to new technology, and the vocabulary needed to discuss modern life is evolving almost daily. In this course you will learn the most up-to-date terminology from expertly crafted lessons as well from your native-speaking tutor."),
+                description(context, Icons.question_mark_outlined,
+                    'Why take this course', courseDetail.reason ?? 'null.'),
                 const SizedBox(
                   height: 8,
                 ),
@@ -227,7 +293,7 @@ class _CourseDetailState extends State<CourseDetail> {
                     context,
                     Icons.question_mark_outlined,
                     'What will you be able to do',
-                    "You will learn vocabulary related to timely topics like remote work, artificial intelligence, online privacy, and more. In addition to discussion questions, you will practice intermediate level speaking tasks such as using data to describe trends."),
+                    courseDetail.purpose ?? 'null.'),
                 const SizedBox(
                   height: 16,
                 ),
@@ -237,20 +303,20 @@ class _CourseDetailState extends State<CourseDetail> {
                 const SizedBox(
                   height: 8,
                 ),
-                subHeading(
-                    context, Icons.person_add_alt_1_outlined, 'Beginner'),
+                subHeading(context, Icons.person_add_alt_1_outlined,
+                    courseLevels[courseDetail.level ?? '0'] ?? 'null.'),
 
                 // Course length
                 header(context, 'Course Length'),
                 const SizedBox(
                   height: 8,
                 ),
-                subHeading(
-                    context, Icons.my_library_books_outlined, '5 topics'),
+                subHeading(context, Icons.my_library_books_outlined,
+                    '${courseDetail.topics!.length ?? ''} topics'),
 
                 // List topic
                 header(context, 'List Topic'),
-                topicList(),
+                topicList(courseDetail.topics ?? []),
                 const SizedBox(
                   height: 16,
                 ),
