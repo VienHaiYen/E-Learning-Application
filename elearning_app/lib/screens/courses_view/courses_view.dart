@@ -7,6 +7,7 @@ import 'package:elearning_app/widgets/course_item.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 // import 'package:elearning_app/widgets/dropdown.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:elearning_app/screens/courses_view/widgets/course_list.dart';
 
 class CoursesView extends StatefulWidget {
   CoursesView({super.key});
@@ -67,7 +68,7 @@ class _CoursesViewState extends State<CoursesView> {
                   Expanded(
                     child: TabBarView(children: [
                       // Here goes the first tab
-                      TutorItem(),
+                      CourseList(),
                       // Here goes the second tab
                       Padding(
                         padding: const EdgeInsets.all(16),
