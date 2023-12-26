@@ -52,7 +52,8 @@ dependencies:
   shared_preferences: ^2.0.15
   jitsi_meet: ^4.0.0
   jwt_decoder: ^2.0.1
-  syncfusion_flutter_pdfviewer: ^20.4.42
+  syncfusion_flutter_pdfviewer: ^20.4.54
+  url_launcher: ^6.1.7
 
 dev_dependencies:
   flutter_test:

@@ -8,6 +8,7 @@ import 'package:elearning_app/services/course_service.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 final courseLevels = {
   '0': 'Any level',
@@ -34,6 +35,8 @@ class _CourseDetailState extends State<CourseDetail> {
 
   late final String courseId;
   late final Course courseDetail;
+
+  var topicIndex = 0;
 
   bool _isLoading = true;
 
@@ -174,6 +177,20 @@ class _CourseDetailState extends State<CourseDetail> {
       );
     }
 
+    // Widget TopicPdf() {
+    //   return Column(
+    //     children: [
+    //       Text(courseDetail.topics?[topicIndex].nameFile ?? ""),
+    //       SfPdfViewer.network(
+    //         // courseDetail.topics?[topicIndex].nameFile ?? "",
+    //         "https://api.app.lettutor.com/file/be4c3df8-3b1b-4c8f-a5cc-75a8e2e6626afileFoods You Love.pdf",
+    //         canShowScrollHead: false,
+    //         canShowScrollStatus: false,
+    //       )
+    //     ],
+    //   );
+    // }
+
     return Scaffold(
         appBar: MyAppBar(),
         body: Stack(children: [
@@ -291,9 +308,33 @@ class _CourseDetailState extends State<CourseDetail> {
                 const SizedBox(
                   height: 16,
                 ),
+                TopicPdfViewer(
+                    url: courseDetail.topics?[topicIndex].nameFile ?? "")
               ],
             ),
           ),
         ]));
+  }
+}
+
+class TopicPdfViewer extends StatefulWidget {
+  const TopicPdfViewer({super.key, required this.url});
+  final String url;
+
+  @override
+  State<TopicPdfViewer> createState() => _TopicPdfViewerState();
+}
+
+class _TopicPdfViewerState extends State<TopicPdfViewer> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: SfPdfViewer.network(
+        // widget.url,
+        "https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf",
+        // canShowScrollHead: false,
+        // canShowScrollStatus: false,
+      ),
+    );
   }
 }
