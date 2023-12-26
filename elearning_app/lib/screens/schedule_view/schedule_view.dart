@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:elearning_app/screens/history/history.dart';
 import 'package:elearning_app/screens/schedule_view/widgets/upcoming_view.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +69,7 @@ class _scheduleViewState extends State<scheduleView> {
                     )
                   ])),
 
-              Flexible(
+              const Flexible(
                 child: DefaultTabController(
                   length: 2,
                   child: Column(
@@ -113,8 +114,7 @@ class _scheduleViewState extends State<scheduleView> {
                         child: TabBarView(
                           children: [
                             UpcomingView(),
-                            Text("2"),
-                            // HistoryView(),
+                            HistoryView(),
                           ],
                         ),
                       )
