@@ -174,33 +174,6 @@ class _CourseDetailState extends State<CourseDetail> {
       );
     }
 
-    Widget suggestedTutor(BuildContext context, String tutorName) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(tutorName),
-          TextButton(
-              onPressed: () {
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (context) => const TutorView()));
-              },
-              child: Text(AppLocalizations.of(context)!.more_info)),
-        ],
-      );
-    }
-
-    Widget suggestedTutorList() {
-      return ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: 12,
-        itemBuilder: (context, index) {
-          return suggestedTutor(context, '${index + 1}. April');
-        },
-      );
-    }
-
     return Scaffold(
         appBar: MyAppBar(),
         body: Stack(children: [
@@ -318,13 +291,6 @@ class _CourseDetailState extends State<CourseDetail> {
                 const SizedBox(
                   height: 16,
                 ),
-
-                // Suggested tutors
-                header(context, 'Suggested Tutors'),
-                const SizedBox(
-                  height: 8,
-                ),
-                suggestedTutorList()
               ],
             ),
           ),

@@ -33,10 +33,10 @@ class _LogInState extends State<LogIn> {
   void _handleLogIn(AuthProvider authProvider) async {
     try {
       await AuthService.logInApp(
-        email: _nameC.text,
-        password: _passwordC.text,
-        // email: "student@lettutor.com",
-        // password: "123456",
+        // email: _nameC.text,
+        // password: _passwordC.text,
+        email: "student@lettutor.com",
+        password: "123456",
         onSuccess: (user, token) async {
           authProvider.logIn(user, token);
 
