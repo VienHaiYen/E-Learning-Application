@@ -1,13 +1,9 @@
 // ignore_for_file: must_be_immutable
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:elearning_app/widgets/my_app_bar.dart';
-import 'package:elearning_app/widgets/group_fixed_button.dart';
 import 'package:elearning_app/provider/auth_provider.dart';
 import 'package:elearning_app/services/user_service.dart';
 import 'package:elearning_app/models/schedule/booking_info.dart';
-import './widgets/history_item.dart';
 import './widgets/history_card.dart';
 
 const itemsPerPage = [

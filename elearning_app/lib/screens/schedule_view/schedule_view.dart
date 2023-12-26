@@ -5,7 +5,6 @@ import 'package:elearning_app/screens/schedule_view/widgets/upcoming_view.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
-import './widgets/schedule_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScheduleView extends StatefulWidget {
@@ -69,7 +68,6 @@ class _ScheduleViewState extends State<ScheduleView> {
                       ),
                     )
                   ])),
-
               Flexible(
                 child: DefaultTabController(
                   initialIndex: widget.page ?? 0,
@@ -124,7 +122,6 @@ class _ScheduleViewState extends State<ScheduleView> {
                   ),
                 ),
               ),
-              // const scheduleItem()
             ],
           ),
         ],

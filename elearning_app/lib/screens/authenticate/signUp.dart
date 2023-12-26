@@ -17,8 +17,43 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final TextEditingController _nameC = TextEditingController();
   final TextEditingController _passwordC = TextEditingController();
+  final TextEditingController _repeatPasswordC = TextEditingController();
 
-  void _handleRegister() async {
+  String errorText = '';
+  bool _isValidToRegister = false;
+
+  void _handleValidation() {
+    final emailRegExp = RegExp(
+        r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
+    if (_nameC.text.isEmpty) {
+      errorText = AppLocalizations.of(context)!.email_empty;
+      _isValidToRegister = false;
+      return;
+    } else if (!emailRegExp.hasMatch(_nameC.text)) {
+      errorText = AppLocalizations.of(context)!.email_wrong_format;
+      _isValidToRegister = false;
+      return;
+    } else if (_passwordC.text.isEmpty) {
+      errorText = AppLocalizations.of(context)!.password_empty;
+      _isValidToRegister = false;
+      return;
+    } else if (_repeatPasswordC.text.isEmpty) {
+      errorText = AppLocalizations.of(context)!.confirm_password_error;
+      _isValidToRegister = false;
+      return;
+    } else if (_repeatPasswordC.text != _passwordC.text) {
+      errorText = AppLocalizations.of(context)!.confirm_password_error;
+      _isValidToRegister = false;
+      return;
+    } else {
+      errorText = '';
+      _isValidToRegister = true;
+    }
+    setState(() {});
+  }
+
+  void _handleSignUp() async {
+    _handleValidation();
     try {
       await AuthService.registerWithEmailAndPassword(
         email: _nameC.text,
@@ -96,12 +131,25 @@ class _SignUpState extends State<SignUp> {
                         // filled: true,
                       ),
                     ),
+                    TextField(
+                      controller: _repeatPasswordC,
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.key),
+                        labelText: 'Repeat Password',
+                        hintText: '********',
+                        labelStyle: TextStyle(fontSize: 14, color: Colors.grey),
+                        hintStyle: TextStyle(fontSize: 14, color: Colors.grey),
+                        // filled: true,
+                      ),
+                    ),
+                    Text(errorText),
                     Container(
                       margin: const EdgeInsets.only(top: 20),
                       width: double.infinity,
                       child: ElevatedButton(
                           onPressed: () {
-                            _handleRegister();
+                            _handleSignUp();
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor:

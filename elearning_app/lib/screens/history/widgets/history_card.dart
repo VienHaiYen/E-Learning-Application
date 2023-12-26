@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:elearning_app/routers/routers.dart';
 import 'package:elearning_app/models/schedule/booking_info.dart';
 
 class HistoryCard extends StatelessWidget {
@@ -59,7 +58,7 @@ class HistoryCard extends StatelessWidget {
                       Text(
                         bookingInfo.scheduleDetailInfo!.scheduleInfo!.tutorInfo!
                                 .name ??
-                            'null name',
+                            '',
                         style: Theme.of(context).textTheme.headline4,
                       ),
                       const SizedBox(height: 8),
@@ -97,7 +96,9 @@ class HistoryCard extends StatelessWidget {
                   child: TextButton(
                     style: TextButton.styleFrom(foregroundColor: Colors.red),
                     onPressed: () async {
-                      final dialogResult = await showReportDialog(context);
+                      // ignore: unused_local_variable
+                      final dialogResult =
+                          await showReportDialog(context, bookingInfo);
                     },
                     child: const Text(
                       'Report',
@@ -126,7 +127,7 @@ class HistoryCard extends StatelessWidget {
   }
 }
 
-Future<bool> showReportDialog(BuildContext context) {
+Future<bool> showReportDialog(BuildContext context, BookingInfo bookingInfo) {
   return showDialog<bool>(
     context: context,
     builder: (context) {
@@ -139,22 +140,24 @@ Future<bool> showReportDialog(BuildContext context) {
             children: [
               Row(
                 children: [
-                  const CircleAvatar(
-                    backgroundImage:
-                        AssetImage('assets/tutor/keegan-avatar.png'),
-                    radius: 32,
-                  ),
-                  const SizedBox(width: 12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Keegan',
+                          bookingInfo.scheduleDetailInfo!.scheduleInfo!
+                                  .tutorInfo!.name ??
+                              '',
                           style: Theme.of(context).textTheme.headline4,
                         ),
                         const SizedBox(height: 4),
-                        const Text('2022-10-20    10:00 - 10:55')
+                        Text(
+                          DateFormat.yMMMEd().format(
+                              DateTime.fromMillisecondsSinceEpoch(bookingInfo
+                                      .scheduleDetailInfo!
+                                      .startPeriodTimestamp ??
+                                  0)),
+                        )
                       ],
                     ),
                   ),
@@ -190,6 +193,7 @@ Future<bool> showReportDialog(BuildContext context) {
         actions: [
           TextButton(
             onPressed: () {
+              // TODO: send report
               Navigator.pop(context, false);
             },
             child: const Text(
