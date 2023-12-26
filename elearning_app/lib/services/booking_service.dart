@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:elearning_app/models/calendar/calendar.dart';
+import 'package:elearning_app/models/schedule/schedule.dart';
 
 class BookingService {
   static const baseUrl = 'https://sandbox.api.lettutor.com';
 
-  static Future<List<Calendar>> getTutorScheduleById({
+  static Future<List<Schedule>> getTutorScheduleById({
     required String token,
     required String userId,
   }) async {
@@ -23,7 +23,7 @@ class BookingService {
     }
 
     final schedules = jsonDecode['data'] as List;
-    return schedules.map((schedule) => Calendar.fromJson(schedule)).toList();
+    return schedules.map((schedule) => Schedule.fromJson(schedule)).toList();
   }
 
   static Future<void> bookClass({

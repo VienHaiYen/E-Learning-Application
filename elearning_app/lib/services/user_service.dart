@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:elearning_app/models/calendar/booking_info.dart';
+import 'package:elearning_app/models/schedule/booking_info.dart';
 import 'package:elearning_app/models/user/learn_topic.dart';
 import 'package:elearning_app/models/user/test_preparation.dart';
 import 'package:elearning_app/models/user/user.dart';
@@ -47,24 +47,24 @@ class UserService {
 
     // Sort lessons by timestamp increasingly
     lessons.sort((a, b) {
-      if (a.calendarDetailInfo == null || b.calendarDetailInfo == null)
+      if (a.scheduleDetailInfo == null || b.scheduleDetailInfo == null)
         return 0;
-      if (a.calendarDetailInfo!.startPeriodTimestamp == null ||
-          b.calendarDetailInfo!.startPeriodTimestamp == null) return 0;
+      if (a.scheduleDetailInfo!.startPeriodTimestamp == null ||
+          b.scheduleDetailInfo!.startPeriodTimestamp == null) return 0;
 
-      final int timestamp1 = a.calendarDetailInfo!.startPeriodTimestamp!;
-      final int timestamp2 = b.calendarDetailInfo!.startPeriodTimestamp!;
+      final int timestamp1 = a.scheduleDetailInfo!.startPeriodTimestamp!;
+      final int timestamp2 = b.scheduleDetailInfo!.startPeriodTimestamp!;
 
       return timestamp1.compareTo(timestamp2);
     });
 
     lessons = lessons.where((element) {
-      if (element.calendarDetailInfo == null) return false;
-      if (element.calendarDetailInfo!.startPeriodTimestamp == null)
+      if (element.scheduleDetailInfo == null) return false;
+      if (element.scheduleDetailInfo!.startPeriodTimestamp == null)
         return false;
 
       final int startTimestamp =
-          element.calendarDetailInfo!.startPeriodTimestamp!;
+          element.scheduleDetailInfo!.startPeriodTimestamp!;
       return startTimestamp > now;
     }).toList();
 
@@ -100,7 +100,7 @@ class UserService {
     return {
       'count': jsonDecode['data']['count'],
       'classes':
-          classes.map((calendar) => BookingInfo.fromJson(calendar)).toList(),
+          classes.map((schedule) => BookingInfo.fromJson(schedule)).toList(),
     };
   }
 
@@ -130,7 +130,7 @@ class UserService {
     return {
       'count': jsonDecode['data']['count'],
       'classes':
-          classes.map((calendar) => BookingInfo.fromJson(calendar)).toList()
+          classes.map((schedule) => BookingInfo.fromJson(schedule)).toList()
     };
   }
 
@@ -191,7 +191,7 @@ class UserService {
     required String level,
     required List<String> learnTopics,
     required List<String> testPreparations,
-    required String studyCalendar,
+    required String studyschedule,
   }) async {
     final response = await put(
       Uri.parse('$baseUrl/user/info'),
@@ -206,7 +206,7 @@ class UserService {
         'level': level,
         'learnTopics': learnTopics,
         'testPreparations': testPreparations,
-        'studyCalendar': studyCalendar,
+        'studyschedule': studyschedule,
       }),
     );
 

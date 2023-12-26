@@ -16,7 +16,7 @@ import 'package:elearning_app/screens/authenticate/signUp.dart';
 import 'package:elearning_app/screens/authenticate/logIn.dart';
 import 'package:elearning_app/screens/findingTutor/findingTutor.dart';
 import 'package:elearning_app/screens/tutor_view/tutor_view.dart';
-import 'package:elearning_app/screens/calendar_view/calendar_view.dart';
+import 'package:elearning_app/screens/schedule_view/schedule_view.dart';
 import 'package:elearning_app/screens/history/history.dart';
 import 'package:elearning_app/screens/courses_view/courses_view.dart';
 import 'package:elearning_app/screens/my_course/my_course.dart';

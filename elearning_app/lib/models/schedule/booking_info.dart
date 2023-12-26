@@ -1,12 +1,12 @@
 import 'class_review.dart';
-import 'calendar_detail.dart';
+import 'schedule_detail.dart';
 
 class BookingInfo {
   int? createdAtTimeStamp;
   int? updatedAtTimeStamp;
   String? id;
   String? userId;
-  String? calendarDetailId;
+  String? scheduleDetailId;
   String? tutorMeetingLink;
   String? studentMeetingLink;
   String? studentRequest;
@@ -17,7 +17,7 @@ class BookingInfo {
   String? recordUrl;
 
   bool? isDeleted;
-  CalendarDetail? calendarDetailInfo;
+  scheduleDetail? scheduleDetailInfo;
   ClassReview? classReview;
 
   BookingInfo({
@@ -25,7 +25,7 @@ class BookingInfo {
     this.updatedAtTimeStamp,
     this.id,
     this.userId,
-    this.calendarDetailId,
+    this.scheduleDetailId,
     this.tutorMeetingLink,
     this.studentMeetingLink,
     this.studentRequest,
@@ -35,7 +35,7 @@ class BookingInfo {
     this.updatedAt,
     this.recordUrl,
     this.isDeleted,
-    this.calendarDetailInfo,
+    this.scheduleDetailInfo,
     this.classReview,
   });
 
@@ -44,7 +44,7 @@ class BookingInfo {
     updatedAtTimeStamp = json['updatedAtTimeStamp'];
     id = json['id'];
     userId = json['userId'];
-    calendarDetailId = json['calendarDetailId'];
+    scheduleDetailId = json['scheduleDetailId'];
     tutorMeetingLink = json['tutorMeetingLink'];
     studentMeetingLink = json['studentMeetingLink'];
     studentRequest = json['studentRequest'];
@@ -55,8 +55,8 @@ class BookingInfo {
     recordUrl = json['recordUrl'];
 
     isDeleted = json['isDeleted'];
-    calendarDetailInfo = json['calendarDetailInfo'] != null
-        ? CalendarDetail.fromJson(json['calendarDetailInfo'])
+    scheduleDetailInfo = json['scheduleDetailInfo'] != null
+        ? scheduleDetail.fromJson(json['scheduleDetailInfo'])
         : null;
     classReview = json['classReview'] != null
         ? ClassReview.fromJson(json['classReview'])
@@ -69,7 +69,7 @@ class BookingInfo {
     data['updatedAtTimeStamp'] = updatedAtTimeStamp;
     data['id'] = id;
     data['userId'] = userId;
-    data['calendarDetailId'] = calendarDetailId;
+    data['scheduleDetailId'] = scheduleDetailId;
     data['tutorMeetingLink'] = tutorMeetingLink;
     data['studentMeetingLink'] = studentMeetingLink;
     data['studentRequest'] = studentRequest;
@@ -79,8 +79,8 @@ class BookingInfo {
     data['updatedAt'] = updatedAt;
     data['recordUrl'] = recordUrl;
     data['isDeleted'] = isDeleted;
-    if (calendarDetailInfo != null) {
-      data['calendarDetailInfo'] = calendarDetailInfo!.toJson();
+    if (scheduleDetailInfo != null) {
+      data['scheduleDetailInfo'] = scheduleDetailInfo!.toJson();
     }
     if (classReview != null) {
       data['classReview'] = classReview!.toJson();

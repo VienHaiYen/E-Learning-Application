@@ -1,7 +1,7 @@
-import 'package:elearning_app/models/calendar/calendar_detail.dart';
+import 'package:elearning_app/models/schedule/schedule_detail.dart';
 import 'package:elearning_app/models/tutor/tutor.dart';
 
-class Calendar {
+class Schedule {
   String? id;
   String? tutorId;
   String? startTime;
@@ -10,10 +10,10 @@ class Calendar {
   int? endTimestamp;
   String? createdAt;
   bool? isBooked;
-  List<CalendarDetail>? calendarDetails;
+  List<scheduleDetail>? scheduleDetails;
   Tutor? tutorInfo;
 
-  Calendar({
+  Schedule({
     this.id,
     this.tutorId,
     this.startTime,
@@ -22,11 +22,11 @@ class Calendar {
     this.endTimestamp,
     this.createdAt,
     this.isBooked,
-    this.calendarDetails,
+    this.scheduleDetails,
     this.tutorInfo,
   });
 
-  Calendar.fromJson(Map<String, dynamic> json) {
+  Schedule.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     tutorId = json['tutorId'];
     startTime = json['startTime'];
@@ -35,10 +35,10 @@ class Calendar {
     endTimestamp = json['endTimestamp'];
     createdAt = json['createdAt'];
     isBooked = json['isBooked'];
-    if (json['calendarDetails'] != null) {
-      calendarDetails = <CalendarDetail>[];
-      json['calendarDetails'].forEach((v) {
-        calendarDetails!.add(CalendarDetail.fromJson(v));
+    if (json['scheduleDetails'] != null) {
+      scheduleDetails = <scheduleDetail>[];
+      json['scheduleDetails'].forEach((v) {
+        scheduleDetails!.add(scheduleDetail.fromJson(v));
       });
     }
     tutorInfo =
@@ -55,9 +55,9 @@ class Calendar {
     data['endTimestamp'] = endTimestamp;
     data['createdAt'] = createdAt;
     data['isBooked'] = isBooked;
-    if (calendarDetails != null) {
-      data['calendarDetails'] =
-          calendarDetails!.map((v) => v.toJson()).toList();
+    if (scheduleDetails != null) {
+      data['scheduleDetails'] =
+          scheduleDetails!.map((v) => v.toJson()).toList();
     }
     if (tutorInfo != null) {
       data['tutorInfo'] = tutorInfo!.toJson();

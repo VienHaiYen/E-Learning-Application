@@ -1,20 +1,20 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:elearning_app/screens/calendar_view/widgets/upcoming_view.dart';
+import 'package:elearning_app/screens/schedule_view/widgets/upcoming_view.dart';
 import 'package:elearning_app/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/widgets/group_fixed_button.dart';
-import './widgets/calendar_item.dart';
+import './widgets/schedule_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class CalendarView extends StatefulWidget {
-  const CalendarView({Key? key}) : super(key: key);
+class scheduleView extends StatefulWidget {
+  const scheduleView({Key? key}) : super(key: key);
 
   @override
-  State<CalendarView> createState() => _CalendarViewState();
+  State<scheduleView> createState() => _scheduleViewState();
 }
 
-class _CalendarViewState extends State<CalendarView> {
+class _scheduleViewState extends State<scheduleView> {
   @override
   Widget build(BuildContext context) {
     // return Text("456");
@@ -122,7 +122,7 @@ class _CalendarViewState extends State<CalendarView> {
                   ),
                 ),
               ),
-              // const CalendarItem()
+              // const scheduleItem()
             ],
           ),
         ],

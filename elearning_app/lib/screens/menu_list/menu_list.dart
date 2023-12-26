@@ -30,15 +30,15 @@ class _MenuListState extends State<MenuList> {
               MenuTile(
                   title: AppLocalizations.of(context)!.recurring_schedule,
                   icon: const Icon(Icons.calendar_month),
-                  route: AppRouter.myCalendar),
+                  route: AppRouter.myschedule),
               MenuTile(
                   title: AppLocalizations.of(context)!.tutor,
                   icon: const Icon(Icons.calendar_month),
                   route: AppRouter.findingTutor),
               MenuTile(
                   title: AppLocalizations.of(context)!.schedule,
-                  icon: const Icon(Icons.calendar_view_week),
-                  route: AppRouter.myCalendar),
+                  icon: const Icon(Icons.calendar_month),
+                  route: AppRouter.myschedule),
               MenuTile(
                   title: "Lịch sử",
                   icon: const Icon(Icons.history),

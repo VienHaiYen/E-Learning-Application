@@ -41,7 +41,7 @@ class BottomNavbar extends StatelessWidget {
             BottomNavigationBarItem(
                 icon: Icon(Icons.schedule_outlined),
                 backgroundColor: Colors.black26,
-                label: 'Calendar'),
+                label: 'schedule'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person_outline),
                 backgroundColor: Colors.black26,

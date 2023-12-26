@@ -1,38 +1,38 @@
 import 'booking_info.dart';
-import 'calendar.dart';
+import 'schedule.dart';
 
-class CalendarDetail {
+class scheduleDetail {
   int? startPeriodTimestamp;
   int? endPeriodTimestamp;
   String? id;
-  String? calendarId;
+  String? scheduleId;
   String? startPeriod;
   String? endPeriod;
   String? createdAt;
   String? updatedAt;
   List<BookingInfo>? bookingInfo;
   bool? isBooked;
-  Calendar? calendarInfo;
+  Schedule? scheduleInfo;
 
-  CalendarDetail({
+  scheduleDetail({
     this.startPeriodTimestamp,
     this.endPeriodTimestamp,
     this.id,
-    this.calendarId,
+    this.scheduleId,
     this.startPeriod,
     this.endPeriod,
     this.createdAt,
     this.updatedAt,
     this.bookingInfo,
     this.isBooked,
-    this.calendarInfo,
+    this.scheduleInfo,
   });
 
-  CalendarDetail.fromJson(Map<String, dynamic> json) {
+  scheduleDetail.fromJson(Map<String, dynamic> json) {
     startPeriodTimestamp = json['startPeriodTimestamp'];
     endPeriodTimestamp = json['endPeriodTimestamp'];
     id = json['id'];
-    calendarId = json['calendarId'];
+    scheduleId = json['scheduleId'];
     startPeriod = json['startPeriod'];
     endPeriod = json['endPeriod'];
     createdAt = json['createdAt'];
@@ -44,8 +44,8 @@ class CalendarDetail {
       });
     }
     isBooked = json['isBooked'];
-    calendarInfo = json['calendarInfo'] != null
-        ? Calendar.fromJson(json['calendarInfo'])
+    scheduleInfo = json['scheduleInfo'] != null
+        ? Schedule.fromJson(json['scheduleInfo'])
         : null;
   }
 
@@ -54,7 +54,7 @@ class CalendarDetail {
     data['startPeriodTimestamp'] = startPeriodTimestamp;
     data['endPeriodTimestamp'] = endPeriodTimestamp;
     data['id'] = id;
-    data['calendarId'] = calendarId;
+    data['scheduleId'] = scheduleId;
     data['startPeriod'] = startPeriod;
     data['endPeriod'] = endPeriod;
     data['createdAt'] = createdAt;
@@ -63,8 +63,8 @@ class CalendarDetail {
       data['bookingInfo'] = bookingInfo!.map((v) => v.toJson()).toList();
     }
     data['isBooked'] = isBooked;
-    if (calendarInfo != null) {
-      data['calendarInfo'] = calendarInfo!.toJson();
+    if (scheduleInfo != null) {
+      data['scheduleInfo'] = scheduleInfo!.toJson();
     }
     return data;
   }

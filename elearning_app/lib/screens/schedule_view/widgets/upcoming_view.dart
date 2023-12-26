@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:elearning_app/models/calendar/booking_info.dart';
+import 'package:elearning_app/models/schedule/booking_info.dart';
 import 'package:elearning_app/services/user_service.dart';
 import 'package:elearning_app/provider/auth_provider.dart';
 import 'package:provider/provider.dart';
-import './calendar_item.dart';
+import './schedule_item.dart';
 
 const itemsPerPage = [
   5,
@@ -39,6 +39,7 @@ class _UpcomingClassViewState extends State<UpcomingView> {
 
     setState(() {
       upcoming = result['classes'];
+      print(upcoming.length);
       _count = result['count'];
       _isLoading = false;
     });
@@ -129,16 +130,18 @@ class _UpcomingClassViewState extends State<UpcomingView> {
                     const SizedBox(height: 8),
                     ...List<Widget>.generate(
                       upcoming.length,
-                      (index) => CalendarItem(
-                          // bookingInfo: upcoming[index],
-                          // onCancel: (value) {
-                          //   if (value) {
-                          //     setState(() {
-                          //       _isLoading = true;
-                          //     });
-                          //   }
-                          // },
-                          ),
+                      (index) =>
+                          // Text(upcoming[index].id.toString()),
+                          ScheduleItem(
+                        bookingInfo: upcoming[index],
+                        onCancel: (value) {
+                          if (value) {
+                            setState(() {
+                              _isLoading = true;
+                            });
+                          }
+                        },
+                      ),
                     ),
                     const SizedBox(height: 8),
                     Row(

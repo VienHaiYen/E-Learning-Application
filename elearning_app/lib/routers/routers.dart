@@ -9,8 +9,8 @@ import 'package:elearning_app/screens/authenticate/forgetPassword.dart';
 import 'package:elearning_app/screens/findingTutor/findingTutor.dart';
 import 'package:elearning_app/screens/tutorHome/tutorHome.dart';
 import 'package:elearning_app/screens/tutor_view/tutor_view.dart';
-import 'package:elearning_app/screens/calendar_view/calendar_view.dart';
-import 'package:elearning_app/screens/calendar_detail/calendar_detail.dart';
+import 'package:elearning_app/screens/schedule_view/schedule_view.dart';
+import 'package:elearning_app/screens/schedule_detail/schedule_detail.dart';
 import 'package:elearning_app/screens/history/history.dart';
 import 'package:elearning_app/screens/history_detail/history_detail.dart';
 import 'package:elearning_app/screens/courses_view/courses_view.dart';
@@ -54,8 +54,8 @@ class AppRouter {
   static const String historyDetail = '/history-detail';
   static const String myCourses = '/my-courses';
   static const String becomeTutor = '/become-tutor';
-  static const String myCalendar = '/calendar';
-  static const String calendarDetail = '/calendar-detail';
+  static const String myschedule = '/schedule';
+  static const String scheduleDetail = '/schedule-detail';
 
   // Meeting page
   static const String meeting = '/meeting';
@@ -132,14 +132,14 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => Wallet(),
         );
-      case myCalendar:
+      case myschedule:
         return MaterialPageRoute(
-          builder: (context) => const CalendarView(),
+          builder: (context) => const scheduleView(),
         );
       // TODO: Not yet write UI for this page
-      case calendarDetail:
+      case scheduleDetail:
         return MaterialPageRoute(
-          builder: (context) => const CalendarDetail(),
+          builder: (context) => const ScheduleDetail(),
         );
       case myHistory:
         return MaterialPageRoute(

@@ -1,7 +1,7 @@
 import 'package:elearning_app/screens/courses_view/courses_view.dart';
 import 'package:elearning_app/screens/findingTutor/findingTutor.dart';
 import 'package:elearning_app/screens/tutorHome/tutorHome.dart';
-import 'package:elearning_app/screens/calendar_view/calendar_view.dart';
+import 'package:elearning_app/screens/schedule_view/schedule_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:elearning_app/widgets/bottom_navbar.dart';
@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
   var screens = [
     const FindingTutor(),
     CoursesView(),
-    const CalendarView(),
+    const scheduleView(),
     const TutorHome()
   ];
 
