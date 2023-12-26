@@ -8,17 +8,18 @@ import 'package:elearning_app/widgets/group_fixed_button.dart';
 import './widgets/schedule_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class scheduleView extends StatefulWidget {
-  const scheduleView({Key? key}) : super(key: key);
+class ScheduleView extends StatefulWidget {
+  const ScheduleView({Key? key, this.page}) : super(key: key);
+
+  final int? page;
 
   @override
-  State<scheduleView> createState() => _scheduleViewState();
+  State<ScheduleView> createState() => _ScheduleViewState();
 }
 
-class _scheduleViewState extends State<scheduleView> {
+class _ScheduleViewState extends State<ScheduleView> {
   @override
   Widget build(BuildContext context) {
-    // return Text("456");
     return Scaffold(
       appBar: MyAppBar(),
       body: Stack(
@@ -69,10 +70,11 @@ class _scheduleViewState extends State<scheduleView> {
                     )
                   ])),
 
-              const Flexible(
+              Flexible(
                 child: DefaultTabController(
+                  initialIndex: widget.page ?? 0,
                   length: 2,
-                  child: Column(
+                  child: const Column(
                     children: [
                       TabBar(
                         tabs: [

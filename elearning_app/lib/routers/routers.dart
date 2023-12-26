@@ -134,7 +134,7 @@ class AppRouter {
         );
       case myschedule:
         return MaterialPageRoute(
-          builder: (context) => const scheduleView(),
+          builder: (context) => const ScheduleView(),
         );
       // TODO: Not yet write UI for this page
       case scheduleDetail:
@@ -143,7 +143,7 @@ class AppRouter {
         );
       case myHistory:
         return MaterialPageRoute(
-          builder: (context) => const History(),
+          builder: (context) => const ScheduleView(page: 1),
         );
       // TODO: Not yet write UI for this page
       case historyDetail:

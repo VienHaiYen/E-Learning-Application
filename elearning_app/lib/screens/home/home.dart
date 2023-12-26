@@ -18,7 +18,7 @@ class _HomeState extends State<Home> {
   var screens = [
     const FindingTutor(),
     CoursesView(),
-    const scheduleView(),
+    const ScheduleView(),
     const TutorHome()
   ];
 
