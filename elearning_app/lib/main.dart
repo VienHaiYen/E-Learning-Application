@@ -1,73 +1,69 @@
-import 'package:elearning_app/provider/app_provider.dart';
-import 'package:elearning_app/provider/auth_provider.dart';
-import 'package:elearning_app/routers/routers.dart';
-import 'package:elearning_app/screens/authenticate/forgetPassword.dart';
-import 'package:elearning_app/screens/home/home.dart';
-import 'package:elearning_app/widgets/my_app_bar.dart';
+import 'dart:io';
+import 'package:elearning_app/src/app_style/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:elearning_app/l10n/l10n.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import 'package:elearning_app/app_style/theme.dart';
-import "package:elearning_app/routers/routers.dart";
-
-import 'package:elearning_app/screens/authenticate/signUp.dart';
-import 'package:elearning_app/screens/authenticate/logIn.dart';
-import 'package:elearning_app/screens/findingTutor/findingTutor.dart';
-import 'package:elearning_app/screens/tutor_view/tutor_view.dart';
-import 'package:elearning_app/screens/schedule_view/schedule_view.dart';
-import 'package:elearning_app/screens/history/history.dart';
-import 'package:elearning_app/screens/courses_view/courses_view.dart';
-import 'package:elearning_app/screens/my_course/my_course.dart';
-import 'package:elearning_app/screens/menu_list/menu_list.dart';
-import 'package:elearning_app/screens/wallet/wallet.dart';
-import 'package:elearning_app/screens/meeting/meeting.dart';
-import 'package:elearning_app/screens/course_detail/course_detail.dart';
-
-import 'package:elearning_app/widgets/my_app_bar.dart';
+import 'package:elearning_app/src/features/courses/courses/views/course_detail_view.dart';
+import 'package:elearning_app/src/features/tutor/search_tutor/views/tutor_search_result.dart';
+import 'package:elearning_app/src/features/tutor/tutor_feedback/tutor_feedback_view.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(
-        create: (_) => AppProvider(),
-      ),
-      ChangeNotifierProvider(
-        create: (_) => AuthProvider(),
-      ),
-    ],
-    child: MaterialApp(
-        title: 'Lettutor',
-        debugShowCheckedModeBanner: false,
-        locale: const Locale('vi'),
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: L10n.all,
-        theme: AppThemes.lightTheme,
-        darkTheme: AppThemes.darkTheme,
-        onGenerateRoute: AppRouter.generateRoute,
-        home: MyApp()),
-  ));
-}
+import 'package:elearning_app/src/providers/app_provider.dart';
+import 'package:elearning_app/src/providers/auth_provider.dart';
+import 'package:elearning_app/src/constants/routes.dart';
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+import 'package:elearning_app/src/features/authentication/login_view.dart';
+import 'package:elearning_app/src/features/authentication/register_view.dart';
+import 'package:elearning_app/src/features/navigation/navigation_page.dart';
+import 'package:elearning_app/src/features/tutor/tutor_detail/tutor_detail_view.dart';
+import 'package:elearning_app/src/features/user_profile/user_profile_view.dart';
 
+class MyHttpOverrides extends HttpOverrides {
   @override
-  _MyAppState createState() => _MyAppState();
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
 }
 
-class _MyAppState extends State<MyApp> {
+void main() {
+  HttpOverrides.global = MyHttpOverrides();
+  runApp(const Elearning_app());
+}
+
+class Elearning_app extends StatelessWidget {
+  const Elearning_app({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: LogIn(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => AppProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => AuthProvider(),
+        ),
+      ],
+      child: MaterialApp(
+          title: 'Elearning_app',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+              useMaterial3: true,
+              primaryColor: Colors.blue,
+              scaffoldBackgroundColor: Colors.white,
+              textTheme: AppThemes.textTheme),
+          home: const LoginView(),
+          routes: {
+            Routes.login: (context) => const LoginView(),
+            Routes.register: (context) => const RegisterView(),
+            Routes.main: (context) => const NavigationPage(),
+            Routes.userProfile: (context) => const UserProfileView(),
+            Routes.courseDetail: (context) => const CourseDetailView(),
+            Routes.teacherDetail: (context) => const TutorDetailView(),
+            Routes.review: (context) => const TutorFeedbackView(),
+            // Routes.writeReview: (context) => const WriteReviewView(),
+            Routes.tutorSearchResult: (context) => const TutorSearchResult(),
+          }),
     );
   }
 }
