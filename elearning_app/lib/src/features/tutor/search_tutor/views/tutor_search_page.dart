@@ -65,8 +65,6 @@ class _TutorSearchPageState extends State<TutorSearchPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Find a tutor', style: Theme.of(context).textTheme.headline4),
-          const SizedBox(height: 8),
           TextField(
             controller: _nameController,
             decoration: InputDecoration(
