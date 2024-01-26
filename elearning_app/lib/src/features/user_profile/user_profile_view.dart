@@ -72,6 +72,9 @@ class _UserProfileViewState extends State<UserProfileView> {
       testPreparations: testPreparations,
       studySchedule: _studyScheduleController.text,
     );
+    if (result != null) {
+      authProvider.setUser(result);
+    }
 
     setState(() {
       _isLoading = true;
