@@ -1,13 +1,10 @@
 import 'dart:io';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:jitsi_meet/feature_flag/feature_flag.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:elearning_app/src/constants/routes.dart';
 import 'package:elearning_app/src/features/video_call/video_call_view.dart';
 import 'package:elearning_app/src/models/schedule/booking_info.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';
@@ -62,7 +59,6 @@ class UpcomingClassCard extends StatelessWidget {
     }
 
     final options = JitsiMeetingOptions(room: room)
-      // ..serverURL = 'https://meet.jit.si/'
       ..serverURL = "https://meet.lettutor.com"
       ..token = meetingToken
       ..audioOnly = true
