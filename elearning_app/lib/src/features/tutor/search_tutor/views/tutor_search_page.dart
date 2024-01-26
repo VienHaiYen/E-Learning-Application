@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:elearning_app/src/constants/country_list.dart';
 import 'package:elearning_app/src/constants/datatype.dart';
 import 'package:elearning_app/src/constants/routes.dart';
-import 'package:elearning_app/src/dummy/dummy_data.dart';
-import 'package:elearning_app/src/models/tutor/tutor.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';
-import 'package:elearning_app/src/services/tutor_service.dart';
 import 'package:provider/provider.dart';
-
-import 'tutor_search_result.dart';
 
 class TutorSearchPage extends StatefulWidget {
   const TutorSearchPage({Key? key}) : super(key: key);
@@ -21,18 +15,12 @@ class _TutorSearchPageState extends State<TutorSearchPage> {
   final _nameController = TextEditingController();
   List<String> _specialties = [];
 
-  // final _countryController = TextEditingController();
-
   Nationality? _nationality = Nationality.foreign;
   int _chosenSpecialtiesIndex = 0;
 
   Map<String, dynamic> _encapsulateSearchParams(AuthProvider authProvider) {
     final name = _nameController.text;
     final accessToken = authProvider.token?.access?.token as String;
-    // final List<String> filterSpecialties = [];
-    // if (_chosenSpecialtiesIndex != 0) {
-    //   filterSpecialties.add(specialties[_chosenSpecialtiesIndex].toLowerCase().replaceAll(' ', '-'));
-    // }
 
     return {
       'token': accessToken,
@@ -49,9 +37,9 @@ class _TutorSearchPageState extends State<TutorSearchPage> {
   }
 
   void _loadSpecialties(AuthProvider authProvider) {
-    final learnTopics = authProvider.learnTopics.map((e) => e.name ?? 'null');
+    final learnTopics = authProvider.learnTopics.map((e) => e.name ?? '');
     final testPreparations =
-        authProvider.testPreparations.map((e) => e.name ?? 'null');
+        authProvider.testPreparations.map((e) => e.name ?? '');
     _specialties = ['All', ...learnTopics, ...testPreparations];
   }
 
@@ -68,9 +56,8 @@ class _TutorSearchPageState extends State<TutorSearchPage> {
           TextField(
             controller: _nameController,
             decoration: InputDecoration(
-              // contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
               hintStyle: TextStyle(color: Colors.grey[500]),
-              hintText: "search by name",
+              hintText: "Search tutor",
               border: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.grey, width: 2),
                   borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -108,21 +95,6 @@ class _TutorSearchPageState extends State<TutorSearchPage> {
             ],
           ),
           const SizedBox(height: 8),
-          // DropdownButtonFormField(
-          //   decoration: InputDecoration(
-          //     contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-          //     hintText: 'select nationality',
-          //     hintStyle: TextStyle(color: Colors.grey[400]),
-          //     border: const OutlineInputBorder(
-          //       borderSide: BorderSide(color: Colors.grey, width: 2),
-          //       borderRadius: BorderRadius.all(Radius.circular(10)),
-          //     ),
-          //   ),
-          //   items: nationalities
-          //       .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-          //       .toList(),
-          //   onChanged: (value) {},
-          // ),
           const SizedBox(height: 16),
           Text('Specialties', style: Theme.of(context).textTheme.headline4),
           const SizedBox(height: 4),

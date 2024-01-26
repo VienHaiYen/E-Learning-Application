@@ -42,11 +42,11 @@ class _TutorCardState extends State<TutorCard> {
     final learnTopics = authProvider.learnTopics
         .where((topic) =>
             _tutorInfo?.specialties?.split(',').contains(topic.key) ?? false)
-        .map((e) => e.name ?? 'null');
+        .map((e) => e.name ?? '');
     final testPreparations = authProvider.testPreparations
         .where((test) =>
             _tutorInfo?.specialties?.split(',').contains(test.key) ?? false)
-        .map((e) => e.name ?? 'null');
+        .map((e) => e.name ?? '');
     _specialties = [...learnTopics, ...testPreparations];
 
     final result = await TutorService.getTutorInfoById(
@@ -114,7 +114,7 @@ class _TutorCardState extends State<TutorCard> {
                                 style: Theme.of(context).textTheme.headline3),
                           ),
                           Text(
-                              countryList[widget.tutor.country ?? 'null'] ??
+                              countryList[widget.tutor.country ?? ''] ??
                                   'unknown country',
                               style: const TextStyle(fontSize: 16)),
                           widget.tutor.rating == null
@@ -180,7 +180,7 @@ class _TutorCardState extends State<TutorCard> {
               ),
               const SizedBox(height: 8),
               Text(
-                widget.tutor.bio ?? 'null',
+                widget.tutor.bio ?? '',
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
               ),

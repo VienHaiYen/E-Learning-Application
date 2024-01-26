@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:elearning_app/src/constants/items_per_page.dart';
 import 'package:elearning_app/src/models/tutor/tutor.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';
 import 'package:elearning_app/src/services/tutor_service.dart';

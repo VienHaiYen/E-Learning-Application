@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elearning_app/src/widgets/avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/src/constants/country_list.dart';
@@ -42,11 +41,11 @@ class _TutorSearchCardState extends State<TutorSearchCard> {
     final learnTopics = authProvider.learnTopics
         .where((topic) =>
             _tutorInfo?.specialties?.split(',').contains(topic.key) ?? false)
-        .map((e) => e.name ?? 'null');
+        .map((e) => e.name ?? '');
     final testPreparations = authProvider.testPreparations
         .where((test) =>
             _tutorInfo?.specialties?.split(',').contains(test.key) ?? false)
-        .map((e) => e.name ?? 'null');
+        .map((e) => e.name ?? '');
     _specialties = [...learnTopics, ...testPreparations];
 
     final result = await TutorService.getTutorInfoById(
@@ -113,13 +112,11 @@ class _TutorSearchCardState extends State<TutorSearchCard> {
                           child: Text(widget.tutor.name ?? 'null name',
                               style: Theme.of(context).textTheme.headline3),
                         ),
-                        Text(
-                            countryList[widget.tutor.country ?? 'null'] ??
-                                'unknown country',
+                        Text(countryList[widget.tutor.country ?? ''] ?? '',
                             style: const TextStyle(fontSize: 16)),
                         widget.tutor.rating == null
                             ? const Text(
-                                'No reviews yet',
+                                '',
                                 style: TextStyle(
                                   fontStyle: FontStyle.italic,
                                   color: Colors.grey,
@@ -180,18 +177,17 @@ class _TutorSearchCardState extends State<TutorSearchCard> {
             ),
             const SizedBox(height: 8),
             Text(
-              widget.tutor.bio ?? 'null',
+              widget.tutor.bio ?? '',
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
             Align(
               alignment: Alignment.centerRight,
-              child: OutlinedButton.icon(
+              child: OutlinedButton(
                 onPressed: () {
                   _handleTutorDetailView();
                 },
-                icon: const Icon(Icons.edit_calendar),
-                label: const Text('Book'),
+                child: const Text('Book'),
               ),
             )
           ],

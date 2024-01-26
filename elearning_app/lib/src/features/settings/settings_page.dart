@@ -42,7 +42,7 @@ class _SettingsPageState extends State<SettingsPage> {
           Align(
               alignment: Alignment.center,
               child: Text(
-                authProvider.currentUser.name ?? 'null',
+                authProvider.currentUser.name ?? '',
                 style: Theme.of(context).textTheme.headline3,
               )),
           //const SizedBox(height: 12),

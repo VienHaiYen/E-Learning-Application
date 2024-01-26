@@ -1,10 +1,6 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:elearning_app/src/constants/routes.dart';
 import 'package:elearning_app/src/features/video_call/video_call_view.dart';
 import 'package:elearning_app/src/models/schedule/booking_info.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';

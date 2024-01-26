@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/src/constants/course_levels.dart';
 import 'package:elearning_app/src/constants/routes.dart';

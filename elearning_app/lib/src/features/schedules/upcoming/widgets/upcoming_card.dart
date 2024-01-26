@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:elearning_app/src/features/video_call/video_call_view.dart';
 import 'package:elearning_app/src/models/schedule/booking_info.dart';
@@ -47,25 +46,7 @@ class UpcomingClassCard extends StatelessWidget {
   }
 
   void _joinMeeting(String room, String meetingToken) async {
-    Map<FeatureFlagEnum, bool> featureFlags = {
-      FeatureFlagEnum.WELCOME_PAGE_ENABLED: false,
-    };
-    if (!kIsWeb) {
-      if (Platform.isAndroid) {
-        featureFlags[FeatureFlagEnum.CALL_INTEGRATION_ENABLED] = false;
-      } else if (Platform.isIOS) {
-        featureFlags[FeatureFlagEnum.PIP_ENABLED] = false;
-      }
-    }
-
-    final options = JitsiMeetingOptions(room: room)
-      ..serverURL = "https://meet.lettutor.com"
-      ..token = meetingToken
-      ..audioOnly = true
-      ..audioMuted = true
-      ..videoMuted = true
-      ..featureFlags.addAll(featureFlags);
-    await JitsiMeet.joinMeeting(options);
+    SnackBar(content: Text('Not start yet'));
   }
 
   @override

@@ -45,13 +45,13 @@ class _TutorDetailViewState extends State<TutorDetailView> {
       final learnTopics = authProvider.learnTopics
           .where((topic) =>
               result.specialties?.split(',').contains(topic.key) ?? false)
-          .map((e) => e.name ?? 'null');
+          .map((e) => e.name ?? '');
       final testPreparations = authProvider.testPreparations
           .where((test) =>
               result.specialties?.split(',').contains(test.key) ?? false)
-          .map((e) => e.name ?? 'null');
+          .map((e) => e.name ?? '');
       _specialties = [...learnTopics, ...testPreparations];
-      languages = result.languages?.split(',') ?? ['null'];
+      languages = result.languages?.split(',') ?? [''];
     }
 
     if (mounted) {

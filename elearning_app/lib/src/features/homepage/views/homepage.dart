@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:elearning_app/src/dummy/dummy_data.dart';
-import 'package:elearning_app/src/constants/routes.dart';
 import 'package:elearning_app/src/models/tutor/tutor.dart';
 import 'package:elearning_app/src/models/tutor/tutor_info.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';

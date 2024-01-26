@@ -37,13 +37,13 @@ class _UserProfileViewState extends State<UserProfileView> {
     final String token = authProvider.token?.access?.token as String;
     final result = await UserService.getUserInfo(token);
 
-    _nameController.text = result?.name ?? 'null name';
-    emailAddress = result?.email ?? 'null email';
-    phoneNumber = result?.phone ?? 'null phone number';
+    _nameController.text = result?.name ?? 'name';
+    emailAddress = result?.email ?? 'email';
+    phoneNumber = result?.phone ?? 'phone number';
     birthday = result?.birthday ?? 'yyyy-MM-dd';
     country = result?.country ?? 'US';
     level = result?.level ?? 'BEGINNER';
-    _studyScheduleController.text = result?.studySchedule ?? 'null';
+    _studyScheduleController.text = result?.studySchedule ?? '';
 
     chosenTopics = result?.learnTopics ?? [];
     chosenTestPreparations = result?.testPreparations ?? [];
@@ -296,18 +296,18 @@ class _UserProfileViewState extends State<UserProfileView> {
                   const SizedBox(height: 4),
                   Wrap(
                     spacing: 8,
-                    runSpacing: -4,
+                    runSpacing: 4,
                     children: List<Widget>.generate(
                       authProvider.learnTopics.length,
                       (index) => ChoiceChip(
                         backgroundColor: Colors.grey[100],
-                        selectedColor: Colors.lightBlue[100],
+                        selectedColor: Color.fromARGB(255, 180, 204, 214),
                         selected: chosenTopics
                             .map((e) => e.id)
                             .toList()
                             .contains(authProvider.learnTopics[index].id),
                         label: Text(
-                          authProvider.learnTopics[index].name ?? 'null',
+                          authProvider.learnTopics[index].name ?? '',
                           style: TextStyle(
                             fontSize: 14,
                             color: chosenTopics
@@ -354,7 +354,7 @@ class _UserProfileViewState extends State<UserProfileView> {
                             .toList()
                             .contains(authProvider.testPreparations[index].id),
                         label: Text(
-                          authProvider.testPreparations[index].name ?? 'null',
+                          authProvider.testPreparations[index].name ?? '',
                           style: TextStyle(
                             fontSize: 14,
                             color: chosenTestPreparations
@@ -420,7 +420,7 @@ class _UserProfileViewState extends State<UserProfileView> {
                         backgroundColor: Colors.blue,
                       ),
                       child: const Text(
-                        'SAVE',
+                        'Save Changes',
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,

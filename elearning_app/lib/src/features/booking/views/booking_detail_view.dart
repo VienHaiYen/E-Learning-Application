@@ -43,10 +43,6 @@ class _BookingDetailViewState extends State<BookingDetailView> {
 
   @override
   Widget build(BuildContext context) {
-    // final data = ModalRoute.of(context)!.settings.arguments as Map;
-    // final String time = data['selectedHour'];
-    // final String date = data['selectedDate'].toString().substring(0, 11);
-    // final String weekday = weekdayConverter(data['weekday']);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
