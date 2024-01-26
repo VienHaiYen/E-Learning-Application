@@ -3,6 +3,7 @@ import 'package:elearning_app/src/constants/datatype.dart';
 import 'package:elearning_app/src/constants/routes.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TutorSearchPage extends StatefulWidget {
   const TutorSearchPage({Key? key}) : super(key: key);
@@ -77,7 +78,7 @@ class _TutorSearchPageState extends State<TutorSearchPage> {
                   });
                 },
               ),
-              const Text('Vietnamese Tutors'),
+              Text(AppLocalizations.of(context)!.vietnamese_tutor),
             ],
           ),
           Row(
@@ -91,7 +92,7 @@ class _TutorSearchPageState extends State<TutorSearchPage> {
                   });
                 },
               ),
-              const Text('Foreign Tutors'),
+              Text(AppLocalizations.of(context)!.foreign_tutor),
             ],
           ),
           const SizedBox(height: 8),
@@ -135,9 +136,10 @@ class _TutorSearchPageState extends State<TutorSearchPage> {
                     _chosenSpecialtiesIndex = 0;
                   });
                 },
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 6),
-                  child: Text('Clear Filters', style: TextStyle(fontSize: 16)),
+                  child: Text(AppLocalizations.of(context)!.reset_filters,
+                      style: TextStyle(fontSize: 16)),
                 ),
               ),
               const SizedBox(width: 10),

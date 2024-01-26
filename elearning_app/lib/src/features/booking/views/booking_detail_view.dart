@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:elearning_app/src/models/schedule/schedule.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BookingDetailView extends StatefulWidget {
   const BookingDetailView({Key? key, required this.schedule}) : super(key: key);
@@ -51,7 +53,7 @@ class _BookingDetailViewState extends State<BookingDetailView> {
           color: Colors.blue[600],
         ),
         title: Text(
-          'Booking Details',
+          AppLocalizations.of(context)!.booked_schedule,
           style: Theme.of(context).textTheme.headline2,
         ),
       ),
@@ -62,43 +64,7 @@ class _BookingDetailViewState extends State<BookingDetailView> {
           children: [
             Text('Booking Time', style: Theme.of(context).textTheme.headline3),
             const SizedBox(height: 8),
-            // Center(
-            //   child: Text(
-            //     '$time\n$weekday $date',
-            //     textAlign: TextAlign.center,
-            //     style: TextStyle(fontSize: 22, color: Colors.blue[800]),
-            //   ),
-            // ),
             const SizedBox(height: 16),
-            // Row(
-            //   children: [
-            //     Expanded(
-            //       child: Text(
-            //         'Balance',
-            //         style: Theme.of(context).textTheme.headline3,
-            //       ),
-            //     ),
-            //     const Text(
-            //       'You have 1 lesson left',
-            //       style: TextStyle(fontSize: 17, color: Colors.blue),
-            //     ),
-            //   ],
-            // ),
-            // const SizedBox(height: 16),
-            // Row(
-            //   children: [
-            //     Expanded(
-            //       child: Text(
-            //         'Price',
-            //         style: Theme.of(context).textTheme.headline3,
-            //       ),
-            //     ),
-            //     const Text(
-            //       '1 lesson',
-            //       style: TextStyle(fontSize: 17, color: Colors.blue),
-            //     ),
-            //   ],
-            // ),
             const SizedBox(height: 16),
             Text('Notes', style: Theme.of(context).textTheme.headline3),
             const SizedBox(height: 12),
@@ -119,10 +85,6 @@ class _BookingDetailViewState extends State<BookingDetailView> {
                   backgroundColor: Colors.blue,
                 ),
                 onPressed: () async {
-                  // Navigator.popUntil(
-                  //   context,
-                  //   (route) => ModalRoute.withName(Routes.teacherDetail) as bool,
-                  // );
                   final dialogResult = await showBookingResultDialog(context);
                   if (dialogResult) {
                     Navigator.pop(context);
@@ -131,14 +93,14 @@ class _BookingDetailViewState extends State<BookingDetailView> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
+                  children: [
                     Icon(
                       Icons.keyboard_double_arrow_right_rounded,
                       color: Colors.white,
                       size: 32,
                     ),
                     Text(
-                      'BOOK',
+                      AppLocalizations.of(context)!.book_now,
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20, color: Colors.white),
                     ),
@@ -158,9 +120,8 @@ Future<bool> showBookingResultDialog(BuildContext context) async {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const Text('Booking Success'),
-        content:
-            const Text('You can now study with this tutor at booked time.'),
+        title: Text(AppLocalizations.of(context)!.booking_success),
+        content: Text(AppLocalizations.of(context)!.booking_success_noti),
         actions: [
           TextButton(
               onPressed: () {

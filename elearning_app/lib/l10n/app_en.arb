@@ -12,6 +12,7 @@
     "email_empty": "Email address is not empty",
     "email_wrong_format": "Email address is not right format",
     "password_empty": "Password is not empty",
+    "password_too_short": "Password is too short",
     "sign_in": "Sign In",
     "sign_in_success": "Sign In Successfully",
     "not_have_account": "Don't have an account?",
@@ -61,6 +62,7 @@
     "more_info": "More Info",
     "topics": "Topics",
     "upcoming_lesson": "Upcoming Lesson",
+    "error_upcoming_lesson": "Cannot get Upcoming Lesson",
     "enter_lesson_room": "Enter lesson room",
     "reset_filters": "Reset filters",
     "search_tutor_name": "Enter tutor name",
@@ -97,7 +99,12 @@
     "education":"Education",
     "link_more": "Link",
 
-    "favourite":"Favourite"
+    "favourite":"Favourite",
 
+    "booking_success":"Booking Success",
+    "booking_success_noti":"You can now study with this tutor at booked time.",
+
+    "total_lession_time":"Total Lession Time: ",
+    "my_account":"My Account"
 
 }

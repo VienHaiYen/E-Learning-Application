@@ -211,7 +211,6 @@ class UserService {
     );
 
     final jsonDecode = json.decode(response.body);
-    print(jsonDecode);
     if (response.statusCode != 200) {
       return null;
     }

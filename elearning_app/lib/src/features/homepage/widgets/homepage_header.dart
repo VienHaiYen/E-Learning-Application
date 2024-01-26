@@ -6,6 +6,7 @@ import 'package:elearning_app/src/models/schedule/booking_info.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';
 import 'package:elearning_app/src/services/user_service.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomepageHeader extends StatefulWidget {
   const HomepageHeader({Key? key}) : super(key: key);
@@ -45,7 +46,7 @@ class _HomepageHeaderState extends State<HomepageHeader> {
       return 'You have not attended any class';
     }
 
-    String result = 'Total Lesson Time:';
+    String result = AppLocalizations.of(context)!.total_lession_time;
 
     final int hour = totalLessonTime.inHours;
     final int minute = totalLessonTime.inMinutes - hour * 60;
@@ -86,8 +87,8 @@ class _HomepageHeaderState extends State<HomepageHeader> {
       child: _isLoading
           ? Center(
               child: _isError
-                  ? const Text(
-                      'Error: Cannot get upcoming class',
+                  ? Text(
+                      AppLocalizations.of(context)!.error_upcoming_lesson,
                       style: TextStyle(color: Colors.white),
                     )
                   : const CircularProgressIndicator(
@@ -96,10 +97,10 @@ class _HomepageHeaderState extends State<HomepageHeader> {
             )
           : Column(
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(vertical: 12),
                   child: Text(
-                    'Upcoming Lesson',
+                    AppLocalizations.of(context)!.upcoming_lesson,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 20,
@@ -134,11 +135,11 @@ class _HomepageHeaderState extends State<HomepageHeader> {
                           ));
                         }
                       },
-                      child: const Row(
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           SizedBox(width: 12),
-                          Text('Enter Lesson Room',
+                          Text(AppLocalizations.of(context)!.enter_lesson_room,
                               style: TextStyle(fontSize: 14)),
                         ],
                       )),

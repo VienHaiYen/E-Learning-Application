@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:elearning_app/src/constants/routes.dart';
-import 'package:elearning_app/src/models/language/lang_en.dart';
-import 'package:elearning_app/src/models/language/lang_vi.dart';
-import 'package:elearning_app/src/models/language/language.dart';
+
 import 'package:elearning_app/src/providers/app_provider.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';
 import 'package:elearning_app/src/services/auth_service.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -17,7 +16,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  String chosenLanguage = 'English';
+  String chosenLanguage = 'en';
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -28,14 +27,14 @@ class _LoginViewState extends State<LoginView> {
   String _passwordErrorText = '';
   bool _isValidToLogin = false;
 
-  void _handleValidation(Language language) {
+  void _handleValidation() {
     final emailRegExp = RegExp(
         r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
     if (_emailController.text.isEmpty) {
-      _emailErrorText = language.emptyEmail;
+      _emailErrorText = AppLocalizations.of(context)!.email_empty;
       _isValidToLogin = false;
     } else if (!emailRegExp.hasMatch(_emailController.text)) {
-      _emailErrorText = language.invalidEmail;
+      _emailErrorText = AppLocalizations.of(context)!.email_wrong_format;
       _isValidToLogin = false;
     } else {
       _emailErrorText = '';
@@ -43,10 +42,10 @@ class _LoginViewState extends State<LoginView> {
     }
 
     if (_passwordController.text.isEmpty) {
-      _passwordErrorText = language.emptyPassword;
+      _passwordErrorText = AppLocalizations.of(context)!.password_empty;
       _isValidToLogin = false;
     } else if (_passwordController.text.length < 6) {
-      _passwordErrorText = language.passwordTooShort;
+      _passwordErrorText = AppLocalizations.of(context)!.password_too_short;
       _isValidToLogin = false;
     } else {
       _passwordErrorText = '';
@@ -132,23 +131,23 @@ class _LoginViewState extends State<LoginView> {
   void _loadLanguage(AppProvider appProvider) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final lang = prefs.getString('language') ?? 'EN';
-    if (lang == 'EN') {
-      chosenLanguage = 'English';
-      appProvider.setLanguage(English());
+    if (lang == 'en') {
+      chosenLanguage = 'en';
+      appProvider.setLanguage('en');
     } else {
-      chosenLanguage = 'Tiếng Việt';
-      appProvider.setLanguage(Vietnamese());
+      chosenLanguage = 'vi';
+      appProvider.setLanguage('vi');
     }
   }
 
   void _updateLanguage(AppProvider appProvider, String value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (value == 'English') {
-      appProvider.language = English();
-      await prefs.setString('language', 'EN');
+    if (value == 'en') {
+      appProvider.language = 'en';
+      await prefs.setString('language', 'en');
     } else {
-      appProvider.language = Vietnamese();
-      await prefs.setString('language', 'VI');
+      appProvider.language = 'vi';
+      await prefs.setString('language', 'vi');
     }
   }
 
@@ -156,7 +155,6 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     final authProvider = context.watch<AuthProvider>();
     final appProvider = context.watch<AppProvider>();
-    final lang = appProvider.language;
 
     _loadLanguage(appProvider);
     if (_isAuthenticating) {
@@ -182,11 +180,11 @@ class _LoginViewState extends State<LoginView> {
                           value: chosenLanguage,
                           items: const [
                             DropdownMenuItem<String>(
-                              value: 'English',
+                              value: 'en',
                               child: Text('English'),
                             ),
                             DropdownMenuItem<String>(
-                              value: 'Tiếng Việt',
+                              value: 'vi',
                               child: Text('Tiếng Việt'),
                             ),
                           ],
@@ -219,7 +217,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        lang.email,
+                        AppLocalizations.of(context)!.email,
                         style:
                             const TextStyle(fontSize: 16, color: Colors.grey),
                       ),
@@ -229,7 +227,7 @@ class _LoginViewState extends State<LoginView> {
                         keyboardType: TextInputType.emailAddress,
                         autocorrect: false,
                         onChanged: (value) {
-                          _handleValidation(lang);
+                          _handleValidation();
                         },
                         decoration: InputDecoration(
                           hintStyle: TextStyle(color: Colors.grey[400]),
@@ -251,7 +249,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
                       const SizedBox(height: 24),
                       Text(
-                        lang.password,
+                        "Password",
                         style:
                             const TextStyle(fontSize: 16, color: Colors.grey),
                       ),
@@ -261,7 +259,7 @@ class _LoginViewState extends State<LoginView> {
                         obscureText: true,
                         autocorrect: false,
                         onChanged: (value) {
-                          _handleValidation(lang);
+                          _handleValidation();
                         },
                         decoration: InputDecoration(
                           hintStyle: TextStyle(color: Colors.grey[400]),
@@ -291,7 +289,7 @@ class _LoginViewState extends State<LoginView> {
                             SnackBar(content: Text('Not start yet'));
                           },
                           child: Text(
-                            lang.forgotPassword,
+                            AppLocalizations.of(context)!.forgot_password,
                             style: const TextStyle(fontSize: 16),
                           ),
                         ),
@@ -307,21 +305,17 @@ class _LoginViewState extends State<LoginView> {
                               _isValidToLogin ? Colors.blue : Colors.grey[400],
                         ),
                         child: Text(
-                          lang.login,
+                          AppLocalizations.of(context)!.sign_in,
                           style: const TextStyle(
                               fontSize: 20, color: Colors.white),
                         ),
                       ),
                       const SizedBox(height: 16),
-                      Text(
-                        lang.loginWith,
-                        textAlign: TextAlign.center,
-                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            lang.registerQuestion,
+                            AppLocalizations.of(context)!.not_have_account,
                             style: const TextStyle(fontSize: 16),
                           ),
                           TextButton(
@@ -329,7 +323,7 @@ class _LoginViewState extends State<LoginView> {
                               Navigator.pushNamed(context, Routes.register);
                             },
                             child: Text(
-                              lang.register,
+                              AppLocalizations.of(context)!.sign_up,
                               style: const TextStyle(fontSize: 16),
                             ),
                           ),

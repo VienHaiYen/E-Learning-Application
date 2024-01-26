@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
@@ -9,6 +8,7 @@ import 'package:elearning_app/src/models/schedule/booking_info.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';
 import 'package:elearning_app/src/services/booking_service.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UpcomingClassCard extends StatelessWidget {
   const UpcomingClassCard(
@@ -207,8 +207,8 @@ class UpcomingClassCard extends StatelessWidget {
                         }
                       }
                     },
-                    child: const Text(
-                      'Go to meeting',
+                    child: Text(
+                      AppLocalizations.of(context)!.enter_lesson_room,
                       style: TextStyle(fontSize: 16),
                     ),
                   ),

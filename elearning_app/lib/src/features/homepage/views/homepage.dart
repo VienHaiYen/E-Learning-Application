@@ -9,6 +9,8 @@ import 'package:provider/provider.dart';
 import '../widgets/homepage_header.dart';
 import '../widgets/tutor_card.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -71,7 +73,7 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.all(12),
             child: Text(
-              'Recommended Tutors',
+              AppLocalizations.of(context)!.suggested_tutors,
               style: Theme.of(context).textTheme.headline3,
             ),
           ),

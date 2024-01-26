@@ -3,6 +3,7 @@ import 'package:elearning_app/src/constants/routes.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -56,7 +57,7 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 4),
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, Routes.userProfile),
-            child: const Card(
+            child: Card(
               surfaceTintColor: Colors.white,
               elevation: 2,
               child: Padding(
@@ -66,7 +67,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     Icon(Icons.manage_accounts, size: 30),
                     SizedBox(width: 12),
                     Text(
-                      'My Account',
+                      AppLocalizations.of(context)!.my_account,
                       style: TextStyle(fontSize: 16),
                     )
                   ],
@@ -75,7 +76,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
           const SizedBox(height: 4),
-          const Card(
+          Card(
             surfaceTintColor: Colors.white,
             elevation: 2,
             child: Padding(
@@ -85,7 +86,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   Icon(Icons.language, size: 30),
                   SizedBox(width: 12),
                   Text(
-                    'Language',
+                    AppLocalizations.of(context)!.language,
                     style: TextStyle(fontSize: 16),
                   )
                 ],
@@ -95,7 +96,7 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 4),
           GestureDetector(
             onTap: () => {SnackBar(content: Text('Not start yet'))},
-            child: const Card(
+            child: Card(
               surfaceTintColor: Colors.white,
               elevation: 2,
               child: Padding(
@@ -105,7 +106,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     Icon(Icons.assignment, size: 30),
                     SizedBox(width: 12),
                     Text(
-                      'Become A Tutor',
+                      AppLocalizations.of(context)!.tutor_register,
                       style: TextStyle(fontSize: 16),
                     )
                   ],
@@ -137,13 +138,13 @@ class _SettingsPageState extends State<SettingsPage> {
               minimumSize: const Size.fromHeight(44),
               backgroundColor: const Color.fromRGBO(255, 0, 0, 0.2),
             ),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.logout, color: Colors.red),
                 SizedBox(width: 8),
                 Text(
-                  'Log Out',
+                  AppLocalizations.of(context)!.log_out,
                   style: TextStyle(fontSize: 18, color: Colors.red),
                 ),
               ],
@@ -161,7 +162,7 @@ Future<bool> _showLogOutConfirmDialog(BuildContext context) async {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const Text('Log Out'),
+        title: Text(AppLocalizations.of(context)!.log_out),
         content: const Text('Are you sure you want to log out?'),
         actions: [
           TextButton(

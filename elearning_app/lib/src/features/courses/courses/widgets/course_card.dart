@@ -62,7 +62,7 @@ class CourseCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          courseLevels[course.level!] ?? 'null course level',
+                          courseLevels[course.level!] ?? 'unknown',
                           style: const TextStyle(fontSize: 18),
                         ),
                       ),

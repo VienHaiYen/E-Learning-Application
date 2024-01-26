@@ -12,6 +12,7 @@
     "email_empty": "Email không được để trống",
     "email_wrong_format": "Email không đúng định dạng",
     "password_empty": "Mật khẩu không được để trống",
+    "password_too_short": "Mật khẩu quá ngắn",
     "sign_in": "Đăng nhập",
     "sign_in_success": "Sign In Successfully",
     "not_have_account": "Chưa có tài khoản?",
@@ -61,6 +62,7 @@
     "more_info": "Xem thêm",
     "topics": "Chủ đề",
     "upcoming_lesson": "Buổi học sắp tới",
+    "error_upcoming_lesson": "Không tải được Buổi học sắp tới",
     "enter_lesson_room": "Tham gia buổi học",
     "reset_filters": "Đặt lại bộ tìm kiếm",
     "search_tutor_name": "Nhập tên giáo viên",
@@ -98,7 +100,14 @@
     "education":"Học vấn",
     "link_more": "Tìm hiểu",
 
-    "favourite":"Yêu thích"
+    "favourite":"Yêu thích",
 
+    "booking_success":"Đặt lịch thành công",
+    "booking_success_noti":"Bạn có thể học cùng gia sư vào thời gian đã đặt.",
+
+    "total_lession_time":"Tổng giờ học: ",
+
+    "my_account":"Tài khoản của tôi"
+    
 
 }

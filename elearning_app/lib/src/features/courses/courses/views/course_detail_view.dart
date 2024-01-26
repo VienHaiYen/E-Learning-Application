@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/src/constants/course_levels.dart';
 
@@ -7,6 +6,7 @@ import 'package:elearning_app/src/models/course/course.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';
 import 'package:elearning_app/src/services/course_service.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CourseDetailView extends StatefulWidget {
   const CourseDetailView({
@@ -78,7 +78,7 @@ class _CourseDetailState extends State<CourseDetailView> {
                     padding:
                         const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                     child: Text(
-                      courseDetail.name ?? 'null. You name it',
+                      courseDetail.name ?? '',
                       style: const TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
@@ -89,8 +89,7 @@ class _CourseDetailState extends State<CourseDetailView> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      courseDetail.description ??
-                          'null. No one knows what this is about',
+                      courseDetail.description ?? '',
                       style: const TextStyle(fontSize: 16),
                     ),
                   ),
@@ -98,7 +97,7 @@ class _CourseDetailState extends State<CourseDetailView> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      'Overview',
+                      AppLocalizations.of(context)!.overview,
                       style: Theme.of(context).textTheme.headline3,
                     ),
                   ),
@@ -110,7 +109,7 @@ class _CourseDetailState extends State<CourseDetailView> {
                         const Icon(Icons.help_outline, color: Colors.blue),
                         const SizedBox(width: 8),
                         Text(
-                          'Why Take This Course?',
+                          AppLocalizations.of(context)!.why_take_course,
                           style: Theme.of(context).textTheme.headline4,
                         ),
                       ],
@@ -118,8 +117,7 @@ class _CourseDetailState extends State<CourseDetailView> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 48, right: 16),
-                    child: Text(courseDetail.reason ??
-                        'null. There is no reason to study this course'),
+                    child: Text(courseDetail.reason ?? ''),
                   ),
                   Padding(
                     padding:
@@ -129,7 +127,7 @@ class _CourseDetailState extends State<CourseDetailView> {
                         const Icon(Icons.help_outline, color: Colors.blue),
                         const SizedBox(width: 8),
                         Text(
-                          'What will you be able to do?',
+                          AppLocalizations.of(context)!.what_able_to_do,
                           style: Theme.of(context).textTheme.headline4,
                         ),
                       ],
@@ -137,13 +135,12 @@ class _CourseDetailState extends State<CourseDetailView> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 48, right: 16),
-                    child: Text(courseDetail.purpose ??
-                        'null. This course is useless apparently'),
+                    child: Text(courseDetail.purpose ?? ''),
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                     child: Text(
-                      'Experience Level',
+                      AppLocalizations.of(context)!.experience_level,
                       style: Theme.of(context).textTheme.headline3,
                     ),
                   ),
@@ -156,8 +153,7 @@ class _CourseDetailState extends State<CourseDetailView> {
                             color: Colors.blue),
                         const SizedBox(width: 8),
                         Text(
-                          courseLevels[courseDetail.level ?? '0'] ??
-                              'null. Possibly for gods only',
+                          courseLevels[courseDetail.level ?? '0'] ?? '',
                           style: Theme.of(context).textTheme.headline4,
                         ),
                       ],
@@ -166,7 +162,7 @@ class _CourseDetailState extends State<CourseDetailView> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                     child: Text(
-                      'Course Length',
+                      AppLocalizations.of(context)!.course_length,
                       style: Theme.of(context).textTheme.headline3,
                     ),
                   ),
@@ -187,7 +183,7 @@ class _CourseDetailState extends State<CourseDetailView> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                     child: Text(
-                      'List Of Topics',
+                      AppLocalizations.of(context)!.list_topics,
                       style: Theme.of(context).textTheme.headline3,
                     ),
                   ),

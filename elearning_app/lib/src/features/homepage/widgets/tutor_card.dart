@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elearning_app/src/widgets/avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/src/constants/country_list.dart';
@@ -8,6 +7,7 @@ import 'package:elearning_app/src/models/tutor/tutor_info.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';
 import 'package:elearning_app/src/services/tutor_service.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TutorCard extends StatefulWidget {
   const TutorCard({
@@ -191,7 +191,7 @@ class _TutorCardState extends State<TutorCard> {
                   onPressed: () {
                     _handleTutorDetailView();
                   },
-                  child: const Text('Book'),
+                  child: Text(AppLocalizations.of(context)!.book_now),
                 ),
               )
             ],

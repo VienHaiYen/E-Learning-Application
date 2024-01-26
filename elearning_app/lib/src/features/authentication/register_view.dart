@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:elearning_app/src/constants/routes.dart';
-import 'package:elearning_app/src/models/language/lang_en.dart';
-import 'package:elearning_app/src/models/language/lang_vi.dart';
-import 'package:elearning_app/src/models/language/language.dart';
 import 'package:elearning_app/src/providers/app_provider.dart';
 import 'package:elearning_app/src/services/auth_service.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
@@ -16,7 +13,7 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
-  String chosenLanguage = 'English';
+  String chosenLanguage = 'en';
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -27,14 +24,14 @@ class _RegisterViewState extends State<RegisterView> {
   String _confirmErrorText = '';
   bool _isValidToRegister = false;
 
-  void _handleValidation(Language language) {
+  void _handleValidation() {
     final emailRegExp = RegExp(
         r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');
     if (_emailController.text.isEmpty) {
-      _emailErrorText = language.emptyEmail;
+      _emailErrorText = AppLocalizations.of(context)!.email_empty;
       _isValidToRegister = false;
     } else if (!emailRegExp.hasMatch(_emailController.text)) {
-      _emailErrorText = language.invalidEmail;
+      _emailErrorText = AppLocalizations.of(context)!.email_wrong_format;
       _isValidToRegister = false;
     } else {
       _emailErrorText = '';
@@ -42,10 +39,10 @@ class _RegisterViewState extends State<RegisterView> {
     }
 
     if (_passwordController.text.isEmpty) {
-      _passwordErrorText = language.emptyPassword;
+      _passwordErrorText = AppLocalizations.of(context)!.password_empty;
       _isValidToRegister = false;
     } else if (_passwordController.text.length < 6) {
-      _passwordErrorText = language.passwordTooShort;
+      _passwordErrorText = AppLocalizations.of(context)!.password_too_short;
       _isValidToRegister = false;
     } else {
       _passwordErrorText = '';
@@ -53,13 +50,13 @@ class _RegisterViewState extends State<RegisterView> {
     }
 
     if (_confirmPasswordController.text.isEmpty) {
-      _confirmErrorText = language.confirmPasswordEmpty;
+      _confirmErrorText = AppLocalizations.of(context)!.password_empty;
       _isValidToRegister = false;
     } else if (_confirmPasswordController.text.length < 6) {
-      _confirmErrorText = language.passwordTooShort;
+      _confirmErrorText = AppLocalizations.of(context)!.password_too_short;
       _isValidToRegister = false;
     } else if (_confirmPasswordController.text != _passwordController.text) {
-      _confirmErrorText = language.confirmPasswordNotMatch;
+      _confirmErrorText = AppLocalizations.of(context)!.confirm_password_error;
       _isValidToRegister = false;
     } else {
       _confirmErrorText = '';
@@ -68,7 +65,7 @@ class _RegisterViewState extends State<RegisterView> {
     setState(() {});
   }
 
-  void _handleRegister(Language language) async {
+  void _handleRegister() async {
     try {
       await AuthService.registerWithEmailAndPassword(
         email: _emailController.text,
@@ -77,7 +74,8 @@ class _RegisterViewState extends State<RegisterView> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(language.registerSuccess)),
+          SnackBar(
+              content: Text(AppLocalizations.of(context)!.sign_in_success)),
         );
         Navigator.pop(context);
       }
@@ -90,31 +88,30 @@ class _RegisterViewState extends State<RegisterView> {
 
   void _loadLanguage(AppProvider appProvider) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    final lang = prefs.getString('language') ?? 'EN';
-    if (lang == 'EN') {
-      chosenLanguage = 'English';
-      appProvider.setLanguage(English());
+    final lang = prefs.getString('language') ?? 'en';
+    if (lang == 'en') {
+      chosenLanguage = 'en';
+      appProvider.setLanguage('en');
     } else {
-      chosenLanguage = 'Tiếng Việt';
-      appProvider.setLanguage(Vietnamese());
+      chosenLanguage = 'vi';
+      appProvider.setLanguage('vi');
     }
   }
 
   void _updateLanguage(AppProvider appProvider, String value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (value == 'English') {
-      appProvider.language = English();
-      await prefs.setString('language', 'EN');
+    if (value == 'en') {
+      appProvider.language = 'en';
+      await prefs.setString('language', 'en');
     } else {
-      appProvider.language = Vietnamese();
-      await prefs.setString('language', 'VI');
+      appProvider.language = 'vi';
+      await prefs.setString('language', 'vi');
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final appProvider = context.watch<AppProvider>();
-    final lang = appProvider.language;
     _loadLanguage(appProvider);
 
     return Scaffold(
@@ -130,11 +127,11 @@ class _RegisterViewState extends State<RegisterView> {
                 value: chosenLanguage,
                 items: const [
                   DropdownMenuItem<String>(
-                    value: 'English',
+                    value: 'en',
                     child: Text('English'),
                   ),
                   DropdownMenuItem<String>(
-                    value: 'Tiếng Việt',
+                    value: 'vi',
                     child: Text('Tiếng Việt'),
                   ),
                 ],
@@ -167,7 +164,7 @@ class _RegisterViewState extends State<RegisterView> {
             ),
             const SizedBox(height: 12),
             Text(
-              lang.email,
+              AppLocalizations.of(context)!.email,
               style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
             const SizedBox(height: 4),
@@ -176,7 +173,7 @@ class _RegisterViewState extends State<RegisterView> {
               keyboardType: TextInputType.emailAddress,
               autocorrect: false,
               onChanged: (value) {
-                _handleValidation(lang);
+                _handleValidation();
               },
               decoration: InputDecoration(
                 hintStyle: TextStyle(color: Colors.grey[400]),
@@ -194,7 +191,7 @@ class _RegisterViewState extends State<RegisterView> {
             ),
             const SizedBox(height: 12),
             Text(
-              lang.password,
+              "Password",
               style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
             const SizedBox(height: 4),
@@ -203,7 +200,7 @@ class _RegisterViewState extends State<RegisterView> {
               obscureText: true,
               autocorrect: false,
               onChanged: (value) {
-                _handleValidation(lang);
+                _handleValidation();
               },
               decoration: InputDecoration(
                 hintStyle: TextStyle(color: Colors.grey[400]),
@@ -223,7 +220,7 @@ class _RegisterViewState extends State<RegisterView> {
             ),
             const SizedBox(height: 12),
             Text(
-              lang.confirmPassword,
+              AppLocalizations.of(context)!.confirm_password,
               style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
             const SizedBox(height: 4),
@@ -232,7 +229,7 @@ class _RegisterViewState extends State<RegisterView> {
               obscureText: true,
               autocorrect: false,
               onChanged: (value) {
-                _handleValidation(lang);
+                _handleValidation();
               },
               decoration: InputDecoration(
                 hintStyle: TextStyle(color: Colors.grey[400]),
@@ -252,7 +249,7 @@ class _RegisterViewState extends State<RegisterView> {
             TextButton(
               onPressed: _isValidToRegister
                   ? () {
-                      _handleRegister(lang);
+                      _handleRegister();
                     }
                   : null,
               style: TextButton.styleFrom(
@@ -261,7 +258,7 @@ class _RegisterViewState extends State<RegisterView> {
                     _isValidToRegister ? Colors.blue : Colors.grey[400],
               ),
               child: Text(
-                lang.register,
+                AppLocalizations.of(context)!.sign_up,
                 style: const TextStyle(fontSize: 20, color: Colors.white),
               ),
             ),
@@ -270,7 +267,7 @@ class _RegisterViewState extends State<RegisterView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  lang.alreadyHaveAccount,
+                  AppLocalizations.of(context)!.have_an_account,
                   style: const TextStyle(fontSize: 16),
                 ),
                 TextButton(
@@ -278,7 +275,7 @@ class _RegisterViewState extends State<RegisterView> {
                     Navigator.pop(context);
                   },
                   child: Text(
-                    lang.login,
+                    AppLocalizations.of(context)!.sign_in,
                     style: const TextStyle(fontSize: 16),
                   ),
                 ),
