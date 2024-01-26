@@ -1,3 +1,4 @@
+import 'package:elearning_app/src/providers/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/src/constants/routes.dart';
 import 'package:elearning_app/src/providers/auth_provider.dart';
@@ -13,9 +14,36 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  String chosenLanguage = 'en';
+  void _loadLanguage(AppProvider appProvider) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final lang = prefs.getString('language') ?? 'EN';
+    if (lang == 'en') {
+      chosenLanguage = 'en';
+      appProvider.setLanguage('en');
+    } else {
+      chosenLanguage = 'vi';
+      appProvider.setLanguage('vi');
+    }
+  }
+
+  void _updateLanguage(AppProvider appProvider, String value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (value == 'en') {
+      appProvider.language = 'en';
+      await prefs.setString('language', 'en');
+    } else {
+      appProvider.language = 'vi';
+      await prefs.setString('language', 'vi');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final authProvider = context.watch<AuthProvider>();
+    final appProvider = context.watch<AppProvider>();
+
+    _loadLanguage(appProvider);
 
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -88,14 +116,41 @@ class _SettingsPageState extends State<SettingsPage> {
                   Text(
                     AppLocalizations.of(context)!.language,
                     style: TextStyle(fontSize: 16),
-                  )
+                  ),
+                  DropdownButton<String>(
+                    padding: const EdgeInsets.only(left: 8),
+                    icon: const Icon(Icons.language),
+                    value: chosenLanguage,
+                    items: const [
+                      DropdownMenuItem<String>(
+                        value: 'en',
+                        child: Text('English'),
+                      ),
+                      DropdownMenuItem<String>(
+                        value: 'vi',
+                        child: Text('Tiếng Việt'),
+                      ),
+                    ],
+                    onChanged: (String? language) {
+                      if (language != null) {
+                        _updateLanguage(appProvider, language);
+                      }
+                      setState(() {
+                        chosenLanguage = language!;
+                      });
+                    },
+                  ),
                 ],
               ),
             ),
           ),
           const SizedBox(height: 4),
           GestureDetector(
-            onTap: () => {SnackBar(content: Text('Not start yet'))},
+            onTap: () => {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Not started yet')),
+              )
+            },
             child: Card(
               surfaceTintColor: Colors.white,
               elevation: 2,

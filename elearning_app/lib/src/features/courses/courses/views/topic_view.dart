@@ -11,13 +11,8 @@ class TopicView extends StatelessWidget {
   final String title;
   final String url;
 
-  printSomething() {
-    print(this.url);
-  }
-
   @override
   Widget build(BuildContext context) {
-    printSomething();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

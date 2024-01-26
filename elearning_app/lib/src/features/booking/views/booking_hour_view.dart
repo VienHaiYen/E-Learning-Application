@@ -16,7 +16,7 @@ class BookingHourView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(schedules.length);
+    // print(schedules.length);
     final pickedDate = DateTime.fromMillisecondsSinceEpoch(timestamp);
 
     final validSchedules = schedules.where((schedule) {

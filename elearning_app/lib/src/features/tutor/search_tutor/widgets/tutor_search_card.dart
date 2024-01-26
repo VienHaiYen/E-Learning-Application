@@ -144,7 +144,6 @@ class _TutorSearchCardState extends State<TutorSearchCard> {
                       );
                       _fetchTutorInfo(authProvider);
                     }
-                    // print('IS FAVORITE (CARD): ${_tutorInfo.isFavorite}');
                   },
                   icon: _tutorInfo?.isFavorite ?? false
                       ? const Icon(

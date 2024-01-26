@@ -34,7 +34,6 @@ class _TutorScheduleState extends State<TutorSchedule> {
     result = result.where((schedule) {
       if (schedule.startTimestamp == null) return false;
 
-      print(schedule.startTimestamp);
       final now = DateTime.now();
       final start =
           DateTime.fromMillisecondsSinceEpoch(schedule.startTimestamp!);
@@ -42,7 +41,6 @@ class _TutorScheduleState extends State<TutorSchedule> {
       // bool isTheSameDate = now.day == start.day && now.month == start.month && now.year == start.year;
       return start.isAfter(DateTime.now());
     }).toList();
-    print(DateTime.now());
 
     // Sort learning DateTime increasingly
     result.sort((s1, s2) {
@@ -73,7 +71,6 @@ class _TutorScheduleState extends State<TutorSchedule> {
       }
     }
     scheduleStartTimestamps.sort();
-    print(scheduleStartTimestamps.length);
 
     setState(() {
       _isLoading = false;

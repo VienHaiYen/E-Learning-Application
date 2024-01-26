@@ -205,8 +205,8 @@ class _LoginViewState extends State<LoginView> {
                           children: [
                             Image.asset(
                               'assets/user/login.png',
-                              width: 200,
-                              height: 200,
+                              width: 150,
+                              height: 150,
                             ),
                             Text(
                               ' LetTutor ',
@@ -282,11 +282,13 @@ class _LoginViewState extends State<LoginView> {
                       ),
                       const SizedBox(height: 8),
                       Container(
-                        height: 32,
+                        height: 36,
                         alignment: Alignment.topLeft,
                         child: TextButton(
                           onPressed: () {
-                            SnackBar(content: Text('Not start yet'));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Not started yet')),
+                            );
                           },
                           child: Text(
                             AppLocalizations.of(context)!.forgot_password,

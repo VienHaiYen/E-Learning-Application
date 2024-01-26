@@ -45,20 +45,15 @@ class UpcomingClassCard extends StatelessWidget {
     return now.isAfter(startTime) || now.isAtSameMomentAs(startTime);
   }
 
-  void _joinMeeting(String room, String meetingToken) async {
-    SnackBar(content: Text('Not start yet'));
+  void _joinMeeting(context) async {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Not started yet')),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
-
-    final String meetingToken =
-        bookingInfo.studentMeetingLink?.split('token=')[1] ?? '';
-    Map<String, dynamic> jwtDecoded = JwtDecoder.decode(meetingToken);
-    final String room = jwtDecoded['room'];
-    // print(jwtDecoded['room']);
-    // const room = 'abcd';
 
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 12),
@@ -70,10 +65,6 @@ class UpcomingClassCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                // const CircleAvatar(
-                //   backgroundImage: AssetImage('assets/tutor/keegan-avatar.png'),
-                //   radius: 32,
-                // ),
                 Container(
                   width: 72,
                   height: 72,
@@ -191,11 +182,11 @@ class UpcomingClassCard extends StatelessWidget {
                   child: TextButton(
                     onPressed: () async {
                       if (_isTimeToJoin()) {
-                        _joinMeeting(room, meetingToken);
+                        _joinMeeting(context);
                       } else {
                         final result = await showWaitingRoomDialog(context);
                         if (result) {
-                          _joinMeeting(room, meetingToken);
+                          _joinMeeting(context);
                         } else {
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) {

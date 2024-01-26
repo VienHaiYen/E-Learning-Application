@@ -1,9 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:elearning_app/src/constants/country_list.dart';
 import 'package:elearning_app/src/constants/language_list.dart';
-import 'package:elearning_app/src/dummy/dummy_data.dart';
 import 'package:elearning_app/src/constants/routes.dart';
 import 'package:elearning_app/src/features/booking/widgets/tutor_schedule.dart';
 import 'package:elearning_app/src/features/tutor/tutor_detail/tutor_report_dialog.dart';
@@ -186,7 +184,6 @@ class _TutorDetailViewState extends State<TutorDetailView> {
                               );
                               _fetchTutorInfo(authProvider);
                             }
-                            // print('IS FAVORITE (DETAIL): ${_tutorInfo.isFavorite}');
                           },
                           child: Column(
                             children: [

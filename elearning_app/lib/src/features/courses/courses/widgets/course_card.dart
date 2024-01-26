@@ -13,7 +13,7 @@ class CourseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(course.imageUrl);
+    // print(course.imageUrl);
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(
